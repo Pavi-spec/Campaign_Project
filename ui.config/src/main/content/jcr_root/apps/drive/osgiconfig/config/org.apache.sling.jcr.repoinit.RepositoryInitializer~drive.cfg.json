@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/drive",
+        "create path (nt:unstructured) /content/dam/drive/jcr:content",
+        "set properties on /content/dam/drive/jcr:content\n  set cq:conf{String} to /conf/drive\n  set jcr:title{String} to \"Drive Project\"\nend"
+    ]
+}

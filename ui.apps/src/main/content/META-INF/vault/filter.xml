@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/drive/clientlibs"/>
+    <filter root="/apps/drive/components"/>
+    <filter root="/apps/drive/i18n"/>
+</workspaceFilter>

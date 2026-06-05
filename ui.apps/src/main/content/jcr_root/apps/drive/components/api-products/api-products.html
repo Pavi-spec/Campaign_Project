@@ -1,0 +1,24 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+
+<sly data-sly-call="${clientlib.css @ categories='drive.campaign'}"/>
+
+<sly data-sly-call="${clientlib.js @ categories='drive.campaign'}"/>
+
+<sly data-sly-use.model="com.drive.core.models.ApiProductsModel"/>
+
+<div class="api-products">
+
+    <h2>${model.heading}</h2>
+
+    <input
+            type="hidden"
+            id="buttonText"
+            value="${model.buttonText}"/>
+
+    <div id="productContainer">
+
+        Loading Campaigns...
+
+    </div>
+
+</div>

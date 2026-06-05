@@ -1,0 +1,23 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+
+<sly data-sly-call="${clientlib.css @ categories='drive.campaign'}"/>
+
+<sly data-sly-call="${clientlib.js @ categories='drive.campaign'}"/>
+
+<sly data-sly-use.model="com.drive.core.models.CampaignBannerModel"/>
+
+<div class="campaign-banner">
+
+    <h1>${model.title}</h1>
+
+    <p>${model.description}</p>
+
+    <h3>${model.serviceMessage}</h3>
+
+    <button class="campaign-btn" onclick="showOffer()">
+        ${properties.buttonText}
+    </button>
+
+    <div id="offerMessage"></div>
+
+</div>
