@@ -29,6 +29,7 @@
                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                     fieldLabel="Offer Percentage"
                     name="./offer"/>
+
             <image
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -41,6 +42,33 @@
                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                     fieldLabel="Button Text"
                     name="./buttonText"/>
+
+            <category
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                    fieldLabel="Product Category"
+                    name="./category">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <smartphones
+                            jcr:primaryType="nt:unstructured"
+                            text="Smartphones"
+                            value="smartphones"/>
+
+                    <laptops
+                            jcr:primaryType="nt:unstructured"
+                            text="Laptops"
+                            value="laptops"/>
+
+                    <homeDecoration
+                            jcr:primaryType="nt:unstructured"
+                            text="Home Appliances"
+                            value="furniture"/>
+
+                </items>
+
+            </category>
 
         </items>
 

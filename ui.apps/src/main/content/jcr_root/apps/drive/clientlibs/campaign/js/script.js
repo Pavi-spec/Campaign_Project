@@ -1,138 +1,164 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const button = document.querySelector(".campaign-btn");
+    // Campaign Offer Button
 
-    if(button){
+    const campaignButton =
+        document.querySelector(".campaign-btn");
 
-        button.addEventListener("click", function(){
+    if (campaignButton) {
 
-            const msg = document.getElementById("offerMessage");
+        campaignButton.addEventListener("click", function () {
 
-            if(msg){
-                msg.innerHTML = "🎉 Offer Activated!";
+            const msg =
+                document.getElementById("offerMessage");
+
+            if (msg) {
+
+                msg.innerHTML =
+                    "🎉 Offer Activated!";
+
             }
 
         });
 
     }
 
-});
+    // Campaign Card Buttons
 
+    document.querySelectorAll(".details-btn")
+        .forEach(button => {
 
+            button.addEventListener("click", function () {
 
-document.addEventListener("click", function(event){
+                const category =
+                    this.dataset.category;
 
-    if(event.target.classList.contains("details-btn")){
+                const container =
+                    document.getElementById("products");
 
-        alert("Campaign Details Loaded Successfully!");
+                if (!container) {
 
-    }
+                    console.error(
+                        "Products container not found"
+                    );
 
-});
+                    return;
 
-document.addEventListener("click", function(event){
-
-    if(event.target.closest(".campaign-item")){
-
-        alert("Campaign Selected");
-
-    }
-
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const container =
-        document.getElementById("productContainer");
-
-    if (!container) {
-        return;
-    }
-
-    const buttonText =
-        document.getElementById("buttonText")?.value ||
-        "View Offer";
-
-    fetch("/bin/campaigns")
-
-        .then(function (response) {
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Failed to fetch campaign data"
-                );
-
-            }
-
-            return response.json();
-
-        })
-
-        .then(function (data) {
-
-            container.innerHTML = "";
-
-            if (!data.products ||
-                data.products.length === 0) {
+                }
 
                 container.innerHTML =
-                    "<h3>No Campaigns Available</h3>";
+                    "<h3>Loading Products...</h3>";
 
-                return;
-            }
+                fetch(
+                    "/bin/campaigns?category=" +
+                    category
+                )
 
-            data.products.forEach(function (product) {
+                    .then(response => {
 
-                const card =
-                    document.createElement("div");
+                        if (!response.ok) {
 
-                card.className =
-                    "product-card";
+                            throw new Error(
+                                "Failed to fetch products"
+                            );
 
-                card.innerHTML =
+                        }
 
-                    '<img src="' +
-                    product.thumbnail +
-                    '" alt="' +
-                    product.title +
-                    '" class="product-image">' +
+                        return response.json();
 
-                    '<h3>' +
-                    product.title +
-                    '</h3>' +
+                    })
 
-                    '<p class="price">₹ ' +
-                    product.price +
-                    '</p>' +
+                    .then(data => {
 
-                    '<button class="offer-btn">' +
-                    buttonText +
-                    '</button>';
+                        container.innerHTML = "";
 
-                container.appendChild(card);
+                        if (
+                            !data.products ||
+                            data.products.length === 0
+                        ) {
+
+                            container.innerHTML =
+                                "<h3>No Products Available</h3>";
+
+                            return;
+
+                        }
+
+                        data.products.forEach(product => {
+
+                            container.innerHTML += `
+
+                                <div class="product-card">
+
+                                    <img
+                                        src="${product.thumbnail}"
+                                        alt="${product.title}"
+                                        class="product-image">
+
+                                    <h3>${product.title}</h3>
+
+                                    <p class="price">
+                                        ₹ ${product.price}
+                                    </p>
+
+                                    <button
+                                        class="offer-btn">
+
+                                        Select Product
+
+                                    </button>
+
+                                </div>
+
+                            `;
+
+                        });
+
+                    })
+
+                    .catch(error => {
+
+                        console.error(error);
+
+                        container.innerHTML =
+
+                            "<h3>Unable To Load Products</h3>";
+
+                    });
 
             });
 
-        })
-
-        .catch(function (error) {
-
-            console.error(error);
-
-            container.innerHTML =
-                "<h3>Unable To Load Campaign Data</h3>";
-
         });
 
 });
 
 
+// Campaign List Click
+
 document.addEventListener("click", function (event) {
 
-    if (event.target.classList.contains("offer-btn")) {
+    if (event.target.closest(".campaign-item")) {
 
-        alert("Campaign Offer Activated!");
+        alert("Selected Campaign Offer Activated");
+
+    }
+
+});
+
+
+// Product Button Click
+
+document.addEventListener("click", function (event) {
+
+    if (
+        event.target.classList.contains(
+            "offer-btn"
+        )
+    ) {
+
+        alert(
+            "Campaign Product  Added to your Card!"
+        );
 
     }
 

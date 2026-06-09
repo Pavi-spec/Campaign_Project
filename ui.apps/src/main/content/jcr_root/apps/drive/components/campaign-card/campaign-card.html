@@ -11,7 +11,7 @@
     <div class="offer-badge">
         ${model.offer}
     </div>
-<br>
+
     <img
             src="${model.image}"
             alt="${model.title}"
@@ -21,8 +21,15 @@
 
     <p>${model.description}</p>
 
-    <button class="details-btn">
+    <button
+            class="details-btn"
+            data-category="${model.category}">
+
         ${model.buttonText}
+
     </button>
+    <p>Category : ${model.category}</p>
 
 </div>
+
+

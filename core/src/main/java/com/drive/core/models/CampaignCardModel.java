@@ -28,6 +28,9 @@ public class CampaignCardModel {
     @ValueMapValue
     private String buttonText;
 
+    @ValueMapValue
+    private String category;
+
     public String getTitle() {
         return title;
     }
@@ -40,12 +43,15 @@ public class CampaignCardModel {
         return offer;
     }
 
-
     public String getImage() {
         return image;
     }
 
     public String getButtonText() {
         return buttonText;
+    }
+
+    public String getCategory() {
+        return category;
     }
 }

@@ -31,7 +31,18 @@ public class CampaignServlet extends SlingSafeMethodsServlet {
             SlingHttpServletResponse response)
             throws IOException {
 
-        String apiUrl = "https://dummyjson.com/products?limit=8";
+//        String apiUrl = "https://dummyjson.com/products?limit=8";
+        String category =
+                request.getParameter("category");
+
+        if(category == null || category.isEmpty()) {
+
+            category = "smartphones";
+
+        }
+
+        String apiUrl =
+                "https://dummyjson.com/products/category/" + category;
 
         URL url = new URL(apiUrl);
 
