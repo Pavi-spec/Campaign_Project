@@ -8,6 +8,6 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public String getCampaignMessage() {
-        return "Drive Campaign Portal Running";
+        return "Exclusive Summer Sale Campaigns Available";
     }
 }

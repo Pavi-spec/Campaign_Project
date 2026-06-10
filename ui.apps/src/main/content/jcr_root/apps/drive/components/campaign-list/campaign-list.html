@@ -7,9 +7,11 @@
 <sly data-sly-use.model="com.drive.core.models.CampaignListModel"/>
 
 <div class="campaign-list">
-    <h1> Campaign Offer Details</h1>
-<br>
-    <br>
+
+    <h1 class="campaign-list-heading">
+        Campaign Offer Details
+    </h1>
+
     <div
             class="campaign-item"
             data-sly-repeat.item="${model.campaigns}">
