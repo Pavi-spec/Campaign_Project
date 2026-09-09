@@ -1,0 +1,37 @@
+<sly data-sly-use.button="com.adobe.cq.wcm.core.components.models.Button">
+
+    <a
+            data-sly-test="${button.buttonLink.valid}"
+            id="${button.id}"
+            class="cmp-button"
+            href="${button.buttonLink.url}"
+            data-sly-attribute="${button.buttonLink.htmlAttributes}"
+            aria-label="${button.accessibilityLabel}"
+            title="${button.text ? '' : button.accessibilityLabel}">
+
+        <span
+                data-sly-test="${button.text}"
+                class="cmp-button__text">
+            ${button.text}
+        </span>
+
+    </a>
+
+    <button
+            data-sly-test="${!button.buttonLink.valid}"
+            id="${button.id}"
+            class="cmp-button"
+            type="button"
+            aria-label="${button.accessibilityLabel}"
+            title="${button.text ? '' : button.accessibilityLabel}">
+
+        <span
+                data-sly-test="${button.text}"
+                class="cmp-button__text">
+            ${button.text}
+        </span>
+
+    </button>
+
+</sly>
+

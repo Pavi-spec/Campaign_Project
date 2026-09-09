@@ -1,0 +1,1 @@
+js/component-id-validator.js

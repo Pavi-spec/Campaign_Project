@@ -1,0 +1,26 @@
+.size-component {
+    margin: 20px 0;
+}
+
+.size-image {
+    display: block;
+    object-fit: cover;
+}
+
+/* Small */
+.size-small {
+    width: 150px;
+    height: 150px;
+}
+
+/* Medium */
+.size-medium {
+    width: 300px;
+    height: 300px;
+}
+
+/* Large */
+.size-large {
+    width: 500px;
+    height: 500px;
+}

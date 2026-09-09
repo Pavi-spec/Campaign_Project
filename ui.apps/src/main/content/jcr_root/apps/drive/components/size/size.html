@@ -1,0 +1,13 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+
+<sly data-sly-call="${clientlib.css @ categories='clientlib_size'}"/>
+
+<div class="size-component">
+
+    <img
+            data-sly-test="${properties.image}"
+            src="${properties.image}"
+            alt="Size Image"
+            class="size-image size-${properties.size}"/>
+
+</div>

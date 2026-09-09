@@ -1,0 +1,19 @@
+<sly
+        data-sly-use.image="com.drive.core.models.Version1_ImageModel"/>
+
+<div class="cmp-image">
+
+    <h2>Version 1 Image</h2>
+
+    <p>File Reference: ${image.fileReference}</p>
+    <p>Alt: ${image.alt}</p>
+    <p>Title: ${image.title}</p>
+    <p>Link: ${image.linkURL}</p>
+
+    <img
+            src="${image.fileReference}"
+            alt="${image.alt}"
+            title="${image.title}"
+    />
+
+</div>

@@ -1,0 +1,44 @@
+.selector-component {
+    margin: 20px 0;
+}
+
+.selector-image {
+    display: block;
+    height: auto;
+}
+
+
+/* Full Window */
+
+.selector-FULL_WINDOW {
+    width: 100%;
+}
+
+.selector-FULL_WINDOW .selector-image {
+    width: 100%;
+}
+
+
+/* Sized Container */
+
+.selector-SIZED_CONTAINER {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.selector-SIZED_CONTAINER .selector-image {
+    width: 100%;
+}
+
+
+/* In-Line */
+
+.selector-IN_LINE {
+    display: inline;
+}
+
+.selector-IN_LINE .selector-image {
+    display: inline;
+    width: auto;
+}

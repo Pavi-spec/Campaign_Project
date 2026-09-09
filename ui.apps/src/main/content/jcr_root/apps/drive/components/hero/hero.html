@@ -1,0 +1,69 @@
+<sly data-sly-use.model="com.drive.core.models.HeroModel"/>
+
+
+  <h1>Hero Component</h1>
+<div
+        class="cmp-hero"
+        id="${model.id}">
+
+
+
+
+    <div
+            class="cmp-hero__title"
+            data-sly-test="${model.title}">
+
+        <h1>
+            ${model.title}
+        </h1>
+
+    </div>
+
+
+    <div
+            class="cmp-hero__image"
+            data-sly-test="${model.fileReference}">
+
+        <img
+                class="cmp-hero__image-img"
+                src="${model.fileReference}"
+                alt="${model.alt}"
+                title="${model.imageTitle}"/>
+
+    </div>
+
+
+
+    <div
+            class="cmp-hero__description"
+            data-sly-test="${model.description}">
+
+        ${model.description @ context='html'}
+
+    </div>
+
+    <div
+            class="cmp-hero__date"
+            data-sly-test="${model.formattedDateTime}">
+
+        ${model.formattedDateTime}
+
+    </div>
+
+
+
+    <div
+            class="cmp-hero__tags"
+            data-sly-test="${model.tags}">
+
+        <span
+                class="cmp-hero__tag"
+                data-sly-repeat.tag="${model.tags}">
+
+            ${tag}
+
+        </span>
+
+    </div>
+
+</div>

@@ -1,0 +1,50 @@
+<sly data-sly-use.image="com.drive.core.models.Version2_ImageModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+
+<div
+        data-sly-test="${image.fileReference}"
+        id="${image.id}"
+        class="cmp-image${!wcmmode.disabled ? ' cq-dd-image' : ''}"
+        itemscope
+        itemtype="http://schema.org/ImageObject"
+
+        data-asset="${image.fileReference}"
+        data-title="${image.title || image.alt}"
+
+        data-dm-preset-type="${image.dmPresetType}"
+        data-image-preset="${image.imagePreset}"
+        data-smart-crop-rendition="${image.smartCropRendition}"
+        data-image-modifiers="${image.imageModifiers}">
+
+    <a
+            data-sly-unwrap="${!image.linkURL}"
+            class="cmp-image__link"
+            href="${image.linkURL}">
+
+        <img
+                src="${image.fileReference}"
+                class="cmp-image__image"
+                itemprop="contentUrl"
+                alt="${image.isDecorative ? '' : image.alt}"
+                title="${image.displayPopupTitle ? image.title : ''}"/>
+
+    </a>
+
+    <span
+            class="cmp-image__title"
+            itemprop="caption"
+            data-sly-test="${!image.displayPopupTitle && image.title}">
+        ${image.title}
+    </span>
+
+    <meta
+            itemprop="caption"
+            content="${image.title}"
+            data-sly-test="${image.displayPopupTitle && image.title}"/>
+
+</div>
+
+<sly data-sly-call="${templates.placeholder
+        @ isEmpty = !image.fileReference,
+          classAppend = 'cmp-image cq-dd-image'}">
+</sly>

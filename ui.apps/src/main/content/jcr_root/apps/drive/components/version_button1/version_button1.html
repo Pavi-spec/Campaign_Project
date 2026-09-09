@@ -1,0 +1,29 @@
+<sly data-sly-use.button="com.drive.core.models.Version1_ButtonModel"/>
+
+<a
+        data-sly-test="${button.link}"
+        class="cmp-button"
+        href="${button.link}"
+        id="${button.id}"
+        aria-label="${button.accessibilityLabel}">
+
+    <span data-sly-test="${button.text}"
+          class="cmp-button__text">
+        ${button.text}
+    </span>
+
+</a>
+
+<button
+        data-sly-test="${!button.link}"
+        class="cmp-button"
+        type="button"
+        id="${button.id}"
+        aria-label="${button.accessibilityLabel}">
+
+    <span data-sly-test="${button.text}"
+          class="cmp-button__text">
+        ${button.text}
+    </span>
+
+</button>

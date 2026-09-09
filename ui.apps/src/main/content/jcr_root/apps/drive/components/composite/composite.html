@@ -1,0 +1,22 @@
+<sly data-sly-use.model="com.drive.core.models.CompositeModel"/>
+
+<div class="selector">
+
+    <div class="selector__items"
+         data-sly-list.item="${model.selectorItems}">
+
+        <div class="selector__item">
+
+            <h2>${item.title}</h2>
+
+            <p>${item.description}</p>
+
+            <img data-sly-test="${item.image}"
+                 src="${item.image}"
+                 alt="${item.title}"/>
+
+        </div>
+
+    </div>
+
+</div>

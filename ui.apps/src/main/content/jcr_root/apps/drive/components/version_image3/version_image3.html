@@ -1,0 +1,32 @@
+<div
+        data-sly-use.image="com.adobe.cq.wcm.core.components.models.Image"
+        data-sly-test="${image.src}"
+        data-cmp-is="image"
+        id="${image.id}"
+        class="cmp-image">
+
+    <a
+            data-sly-unwrap="${!image.imageLink.valid}"
+            class="cmp-image__link"
+            data-sly-attribute="${image.imageLink.htmlAttributes}">
+
+        <img
+                class="cmp-image__image"
+                src="${image.src}"
+                srcset="${image.srcset}"
+                sizes="${image.sizes}"
+                loading="${image.lazyEnabled ? 'lazy' : ''}"
+                width="${image.width}"
+                height="${image.height}"
+                alt="${image.alt}"
+                title="${image.displayPopupTitle && image.title}" />
+
+    </a>
+
+    <span
+            class="cmp-image__title"
+            data-sly-test="${!image.displayPopupTitle && image.title}">
+        ${image.title}
+    </span>
+
+</div>
