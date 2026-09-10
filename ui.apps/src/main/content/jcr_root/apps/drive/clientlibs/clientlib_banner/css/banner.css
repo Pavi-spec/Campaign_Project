@@ -1,0 +1,966 @@
+/* =========================================================
+   MAIN BANNER COMPONENT
+   ========================================================= */
+
+.banner-component {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    box-sizing: border-box;
+}
+
+.banner-component *,
+.banner-component *::before,
+.banner-component *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER / NAVBAR
+   ========================================================= */
+
+.banner-header {
+    width: 100%;
+    min-height: 120px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 40px;
+
+    background-color: rgb(25, 118, 210);
+
+    border-bottom: 1px solid rgb(21, 101, 192);
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.banner-logo {
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.banner-logo img {
+    width: 150px;
+    height: 150px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 70%;
+
+    border: 2px solid rgb(255, 255, 255);
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.banner-navbar {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 42px;
+
+    margin-left: 20px;
+}
+
+.banner-navbar a {
+    position: relative;
+
+    padding: 10px 4px;
+
+    color: rgb(255, 255, 255);
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+    transition: color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.banner-navbar a:hover {
+    color: rgb(225, 245, 254);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   NAVBAR HOVER UNDERLINE
+   ========================================================= */
+
+.banner-navbar a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 2px;
+
+    width: 0;
+    height: 2px;
+
+    background-color: rgb(255, 255, 255);
+
+    transition: width 0.25s ease;
+}
+
+.banner-navbar a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   SEARCH AREA
+   ========================================================= */
+
+.banner-search {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-left: 30px;
+
+    flex-shrink: 0;
+}
+
+.banner-search input {
+    width: 180px;
+    height: 54px;
+
+    padding: 0 16px;
+
+    border: 1px solid rgb(203, 213, 225);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background-color: rgb(255, 255, 255);
+
+    color: rgb(17, 24, 39);
+
+    font-size: 16px;
+
+    box-sizing: border-box;
+}
+
+.banner-search input::placeholder {
+    color: rgb(156, 163, 175);
+}
+
+.banner-search input:focus {
+    border-color: rgb(37, 99, 235);
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.banner-search button {
+    height: 54px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: rgb(13, 71, 161);
+
+    color: rgb(255, 255, 255);
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.banner-search button:hover {
+    background-color: rgb(10, 56, 128);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   COMMON CONTENT
+   ========================================================= */
+
+.banner-content {
+    width: 100%;
+
+    min-height: 620px;
+
+    padding: 80px 8%;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PRIMARY CONTENT
+   ========================================================= */
+
+.primary-content {
+    width: 100%;
+
+    min-height: 620px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 80px 8%;
+
+    text-align: center;
+
+    background-color: var(--banner-background-color);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PRIMARY TITLE
+   ========================================================= */
+
+.primary-content h1 {
+    max-width: 1100px;
+
+    margin: 0 0 30px;
+
+    color: rgb(20, 43, 100);
+
+    font-size: 60px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: -1px;
+}
+
+
+/* =========================================================
+   PRIMARY DESCRIPTION
+   ========================================================= */
+
+.primary-content p {
+    max-width: 900px;
+
+    margin: 0;
+
+    color: rgb(91, 52, 145);
+
+    font-size: 21px;
+
+    font-weight: 500;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   SECONDARY CONTENT
+   ========================================================= */
+
+.secondary-content {
+    width: 100%;
+
+    min-height: 620px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 70px;
+
+    padding: 80px 8%;
+
+    background-color: rgb(248, 250, 252);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SECONDARY TEXT
+   ========================================================= */
+
+.secondary-text {
+    flex: 1;
+
+    max-width: 650px;
+}
+
+.secondary-text h1 {
+    margin: 0 0 25px;
+
+    color: rgb(17, 24, 39);
+
+    font-size: 52px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+.secondary-text p {
+    margin: 0;
+
+    color: rgb(75, 85, 99);
+
+    font-size: 20px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   SECONDARY IMAGE
+   ========================================================= */
+
+.secondary-image {
+    width: 48%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.secondary-image img {
+    width: 100%;
+
+    max-width: 600px;
+
+    height: 390px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   TERTIARY CONTENT
+   ========================================================= */
+
+/* =========================================================
+   TERTIARY CONTENT
+   ========================================================= */
+
+.tertiary-content {
+    width: 100%;
+    min-height: 620px;
+    padding: 80px 8%;
+    background-color: rgb(248, 250, 252);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.tertiary-content h1 {
+    margin: 0 0 40px;
+    color: rgb(17, 24, 39);
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   CONTACT DETAILS
+   ========================================================= */
+
+.contact-details {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 35px 45px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 14px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+    text-align: left;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTACT ROW
+   ========================================================= */
+
+.contact-details p {
+    display: flex;
+    align-items: flex-start;
+
+    margin: 0;
+    padding: 18px 0;
+
+    border-bottom: 1px solid rgb(229, 231, 235);
+
+    color: rgb(55, 65, 81);
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.contact-details p:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.contact-details strong {
+    flex: 0 0 140px;
+
+    color: rgb(17, 24, 39);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   VALUE
+   ========================================================= */
+
+.contact-details p span {
+    flex: 1;
+}
+
+
+/* =========================================================
+   ADDRESS
+   ========================================================= */
+
+.contact-details .address-text {
+    white-space: pre-line;
+    flex: 1;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .tertiary-content {
+        padding: 50px 5%;
+    }
+
+    .tertiary-content h1 {
+        font-size: 38px;
+        margin-bottom: 30px;
+    }
+
+    .contact-details {
+        padding: 25px;
+    }
+
+    .contact-details p {
+        font-size: 16px;
+    }
+
+    .contact-details strong {
+        flex: 0 0 110px;
+    }
+}
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.banner-footer {
+    width: 100%;
+
+    min-height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px 60px;
+
+    background-color: rgb(0, 0, 0);
+
+    color: rgb(255, 255, 255);
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+.banner-footer p {
+    margin: 0;
+
+    color: rgb(255, 255, 255);
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1600px) {
+
+    .banner-header {
+        min-height: 125px;
+
+        padding: 0 60px;
+    }
+
+    .banner-logo {
+        width: 250px;
+    }
+
+    .banner-logo img {
+        width: 105px;
+        height: 105px;
+    }
+
+    .banner-navbar {
+        gap: 48px;
+    }
+
+    .banner-navbar a {
+        font-size: 21px;
+    }
+
+    .banner-search {
+        margin-left: 35px;
+    }
+
+    .banner-search input {
+        width: 200px;
+        height: 56px;
+    }
+
+    .banner-search button {
+        height: 56px;
+    }
+
+    .primary-content,
+    .secondary-content,
+    .tertiary-content {
+        min-height: 650px;
+    }
+
+    .primary-content h1 {
+        font-size: 68px;
+    }
+
+    .primary-content p {
+        font-size: 23px;
+    }
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .banner-header {
+        padding: 0 30px;
+    }
+
+    .banner-logo {
+        width: 190px;
+    }
+
+    .banner-logo img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .banner-navbar {
+        gap: 28px;
+
+        margin-left: 10px;
+    }
+
+    .banner-navbar a {
+        font-size: 18px;
+    }
+
+    .banner-search {
+        margin-left: 20px;
+    }
+
+    .banner-search input {
+        width: 150px;
+    }
+
+    .banner-search button {
+        padding: 0 16px;
+    }
+
+    .secondary-content {
+        gap: 45px;
+
+        padding: 70px 6%;
+    }
+
+    .secondary-text h1 {
+        font-size: 44px;
+    }
+
+    .secondary-text p {
+        font-size: 18px;
+    }
+
+    .secondary-image img {
+        height: 340px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .banner-header {
+        min-height: 100px;
+
+        padding: 15px 20px;
+    }
+
+    .banner-logo {
+        width: 150px;
+    }
+
+    .banner-logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .banner-navbar {
+        gap: 18px;
+
+        margin-left: 5px;
+    }
+
+    .banner-navbar a {
+        font-size: 16px;
+    }
+
+    .banner-search {
+        margin-left: 10px;
+
+        gap: 6px;
+    }
+
+    .banner-search input {
+        width: 120px;
+
+        height: 45px;
+    }
+
+    .banner-search button {
+        height: 45px;
+
+        padding: 0 12px;
+
+        font-size: 14px;
+    }
+
+    .primary-content {
+        min-height: 500px;
+
+        padding: 60px 40px;
+    }
+
+    .primary-content h1 {
+        font-size: 48px;
+    }
+
+    .primary-content p {
+        font-size: 18px;
+    }
+
+    .secondary-content {
+        min-height: 500px;
+
+        padding: 60px 40px;
+    }
+
+    .secondary-text h1 {
+        font-size: 38px;
+    }
+
+    .secondary-image img {
+        height: 300px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .banner-header {
+        min-height: auto;
+
+        flex-direction: column;
+
+        gap: 18px;
+
+        padding: 20px;
+    }
+
+    .banner-logo {
+        width: auto;
+
+        justify-content: center;
+    }
+
+    .banner-logo img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .banner-navbar {
+        width: 100%;
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 10px 22px;
+
+        margin: 0;
+    }
+
+    .banner-navbar a {
+        font-size: 16px;
+    }
+
+    .banner-search {
+        width: 100%;
+
+        justify-content: center;
+
+        margin: 0;
+    }
+
+    .banner-search input {
+        width: 65%;
+
+        max-width: 280px;
+
+        height: 45px;
+    }
+
+    .banner-search button {
+        height: 45px;
+
+        padding: 0 15px;
+    }
+
+    .primary-content {
+        min-height: 450px;
+
+        padding: 60px 25px;
+    }
+
+    .primary-content h1 {
+        font-size: 38px;
+
+        line-height: 1.25;
+    }
+
+    .primary-content p {
+        font-size: 17px;
+
+        line-height: 1.7;
+    }
+
+    .secondary-content {
+        min-height: auto;
+
+        flex-direction: column;
+
+        gap: 40px;
+
+        padding: 60px 25px;
+    }
+
+    .secondary-text {
+        width: 100%;
+
+        max-width: 700px;
+
+        text-align: center;
+    }
+
+    .secondary-text h1 {
+        font-size: 36px;
+    }
+
+    .secondary-text p {
+        font-size: 17px;
+    }
+
+    .secondary-image {
+        width: 100%;
+    }
+
+    .secondary-image img {
+        width: 100%;
+
+        max-width: 500px;
+
+        height: 300px;
+    }
+
+    .tertiary-content {
+        min-height: auto;
+
+        padding: 60px 20px;
+    }
+
+    .tertiary-content h1 {
+        font-size: 36px;
+    }
+
+    .contact-details {
+        padding: 25px;
+    }
+
+    .contact-details p {
+        font-size: 16px;
+    }
+
+    .contact-details strong {
+        min-width: 100px;
+    }
+
+    .banner-footer {
+        min-height: 85px;
+
+        padding: 25px 20px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .banner-logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .banner-navbar {
+        gap: 8px 15px;
+    }
+
+    .banner-navbar a {
+        font-size: 14px;
+    }
+
+    .banner-search input {
+        width: 60%;
+
+        font-size: 13px;
+    }
+
+    .banner-search button {
+        font-size: 13px;
+
+        padding: 0 12px;
+    }
+
+    .primary-content h1 {
+        font-size: 32px;
+    }
+
+    .primary-content p {
+        font-size: 16px;
+    }
+
+    .secondary-text h1 {
+        font-size: 31px;
+    }
+
+    .secondary-image img {
+        height: 240px;
+    }
+
+    .tertiary-content h1 {
+        font-size: 31px;
+    }
+
+    .contact-details p {
+        font-size: 14px;
+    }
+
+    .contact-details strong {
+        display: block;
+
+        margin-bottom: 5px;
+    }
+}
+
+

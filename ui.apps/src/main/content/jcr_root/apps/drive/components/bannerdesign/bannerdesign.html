@@ -1,0 +1,195 @@
+<sly
+        data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+        data-sly-call="${clientlib.all @ categories='drive.bannerdesign'}">
+</sly>
+
+<sly data-sly-use.banner="com.drive.core.models.BannerModel"></sly>
+
+
+<div class="banner-component">
+
+    <header class="banner-header">
+
+
+        <div
+                class="banner-logo"
+                data-sly-test="${banner.logo}">
+
+            <img
+                    src="${banner.logo}"
+                    alt="${banner.logoAlt}">
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav
+                class="banner-navbar"
+                data-sly-test="${banner.navigationItems}">
+
+            <sly data-sly-list.item="${banner.navigationItems}">
+
+                <a
+                        data-sly-test="${item.label}"
+                        href="${item.link}.html">
+
+                    ${item.label}
+
+                </a>
+
+            </sly>
+
+        </nav>
+
+
+
+
+        <div class="banner-search">
+
+            <input
+                    type="text"
+                    placeholder="${banner.searchPlaceholder}">
+
+            <button type="button">
+                ${banner.searchButtonText}
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <section
+            class="banner-content primary-content"
+            data-sly-test="${banner.bannerType == 'primary'}"
+            style="--banner-background-color: ${banner.backgroundColor @ context='styleString'}">
+
+        <h1
+                data-sly-test="${banner.primaryTitle}">
+            ${banner.primaryTitle}
+        </h1>
+
+        <p
+                data-sly-test="${banner.primaryDescription}">
+            ${banner.primaryDescription}
+        </p>
+
+    </section>
+
+
+
+    <section
+            class="banner-content secondary-content"
+            data-sly-test="${banner.bannerType == 'secondary'}">
+
+        <div class="secondary-text">
+
+            <h1
+                    data-sly-test="${banner.secondaryTitle}">
+                ${banner.secondaryTitle}
+            </h1>
+
+            <p
+                    data-sly-test="${banner.secondaryDescription}">
+                ${banner.secondaryDescription}
+            </p>
+
+        </div>
+
+
+        <div
+                class="secondary-image"
+                data-sly-test="${banner.secondaryImage}">
+
+            <img
+                    src="${banner.secondaryImage}"
+                    alt="${banner.secondaryImageAlt}">
+
+        </div>
+
+    </section>
+
+
+
+    <section
+            class="banner-content tertiary-content"
+            data-sly-test="${banner.bannerType == 'tertiary'}">
+
+        <h1
+                data-sly-test="${banner.contactHeading}">
+            ${banner.contactHeading}
+        </h1>
+
+
+        <div class="contact-details">
+
+
+            <p data-sly-test="${banner.contactName}">
+
+                <strong>
+                    ${banner.contactNameLabel}:
+                </strong>
+
+                ${banner.contactName}
+
+            </p>
+
+
+
+
+            <p data-sly-test="${banner.contactPhone}">
+
+                <strong>
+                    ${banner.contactPhoneLabel}:
+                </strong>
+
+                ${banner.contactPhone}
+
+            </p>
+
+
+
+
+            <p data-sly-test="${banner.contactEmail}">
+
+                <strong>
+                    ${banner.contactEmailLabel}:
+                </strong>
+
+                ${banner.contactEmail}
+
+            </p>
+
+
+
+
+            <p data-sly-test="${banner.contactAddress}">
+
+                <strong>
+                    ${banner.contactAddressLabel}:
+                </strong>
+
+                <span class="address-text">
+                    ${banner.contactAddress}
+                </span>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer
+            class="banner-footer"
+            data-sly-test="${banner.footerText}">
+
+        <p>
+            ${banner.footerText}
+        </p>
+
+    </footer>
+
+</div>
+

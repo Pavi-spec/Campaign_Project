@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Employee Details"
+        sling:resourceType="cq/gui/components/authoring/dialog"
+        extraClientlibs="[drive.employee-details.dialog]">
+
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <employeeName
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Employee Name"
+                    name="./employeeName"/>
+
+            <employeeRole
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Employee Role"
+                    name="./employeeRole"/>
+
+            <employeeEmail
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Employee Email"
+                    name="./employeeEmail"/>
+
+            <!-- CHECKBOX -->
+            <enableChapterDetails
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                    granite:class="cq-dialog-checkbox-showhide"
+                    name="./enableChapterDetails"
+                    text="Enable Chapter Details"
+                    value="true"
+                    uncheckedValue="false">
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        cq-dialog-checkbox-showhide-target=".chapter-details-showhide"/>
+            </enableChapterDetails>
+
+            <!-- CHAPTER DETAILS -->
+            <chapterDetails
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                    granite:class="hide chapter-details-showhide">
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        showhidetargetvalue="true"/>
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <chapterName
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Chapter Name"
+                            name="./chapterName"/>
+
+                    <chapterNumber
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Chapter Number"
+                            name="./chapterNumber"/>
+
+                    <chapterDescription
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                            fieldLabel="Chapter Description"
+                            name="./chapterDescription"/>
+
+                </items>
+            </chapterDetails>
+
+        </items>
+    </content>
+</jcr:root>

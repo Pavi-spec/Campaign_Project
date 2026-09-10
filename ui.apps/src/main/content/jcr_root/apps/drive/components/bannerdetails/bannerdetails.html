@@ -1,3 +1,9 @@
-<div class="description">
-    ${properties['jcr:description'] @ context='html'}
+<div
+        class="description ${!properties['jcr:description'] ? 'cq-placeholder' : ''}"
+        data-emptytext="Description">
+
+    <sly data-sly-test="${properties['jcr:description']}">
+        ${properties['jcr:description'] @ context='html'}
+    </sly>
+
 </div>

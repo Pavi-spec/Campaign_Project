@@ -1,0 +1,141 @@
+<sly
+        data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+        data-sly-call="${clientlib.all @ categories='aem-training.banner'}">
+</sly>
+
+<div class="banner-component">
+
+
+    <header class="banner-header">
+
+        <div class="banner-logo">
+            <img
+                    src="/content/dam/Summer%20Sale.jpg"
+                    alt="Logo">
+
+        </div>
+
+        <nav class="banner-navbar">
+
+            <a href="#">Home</a>
+
+            <a href="#">Products</a>
+
+            <a href="#">About</a>
+
+            <a href="#">Services</a>
+
+            <a href="#">Contact</a>
+
+        </nav>
+
+
+        <div class="banner-search">
+
+            <input
+                    type="text"
+                    placeholder="Search">
+
+            <button type="button">
+                Search
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <section
+            class="banner-content primary-content"
+            data-sly-test="${properties.bannerType == 'primary'}"
+            style="--banner-background-color: ${properties.backgroundColor @ context='styleString'};">
+
+        <h1>
+            🎉 Exclusive Summer Campaign 2026 ✨
+        </h1>
+
+        <p>
+            ☀️ Welcome everyone! 🌴 Discover exciting summer offers 🏖️, unlock exclusive deals 🎁, and claim your special offer 🎉 today. Don’t miss out on the summer excitement! 😎✨
+        </p>
+
+    </section>
+
+
+    <section
+            class="banner-content secondary-content"
+            data-sly-test="${properties.bannerType == 'secondary'}">
+
+        <div class="secondary-text">
+
+            <h1>
+                ${properties.title}
+            </h1>
+
+            <p>
+                ${properties.description}
+            </p>
+
+        </div>
+
+
+        <div
+                class="secondary-image"
+                data-sly-test="${properties.image}">
+
+            <img
+                    src="${properties.image}"
+                    alt="${properties.title}">
+
+        </div>
+
+    </section>
+
+
+
+    <section
+            class="banner-content tertiary-content"
+            data-sly-test="${properties.bannerType == 'tertiary'}">
+
+        <h1>
+            Contact Information
+        </h1>
+
+        <div class="contact-details">
+
+            <p data-sly-test="${properties.contactName}">
+                <strong>Name:</strong>
+                ${properties.contactName}
+            </p>
+
+            <p data-sly-test="${properties.contactPhone}">
+                <strong>Phone:</strong>
+                ${properties.contactPhone}
+            </p>
+
+            <p data-sly-test="${properties.contactEmail}">
+                <strong>Email:</strong>
+                ${properties.contactEmail}
+            </p>
+
+            <p data-sly-test="${properties.contactAddress}">
+                <strong>Address:</strong>
+                <span class="address-text">${properties.contactAddress}</span>
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+
+    <footer class="banner-footer">
+
+        <p>
+            © 2026 Campaign . All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</div>

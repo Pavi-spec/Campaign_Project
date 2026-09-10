@@ -1,0 +1,41 @@
+<div class="employee-details">
+
+    <h2>Employee Details</h2>
+
+    <p>
+        <strong>Employee Name:</strong>
+        ${properties.employeeName}
+    </p>
+
+    <p>
+        <strong>Employee Role:</strong>
+        ${properties.employeeRole}
+    </p>
+
+    <p>
+        <strong>Employee Email:</strong>
+        ${properties.employeeEmail}
+    </p>
+
+    <div data-sly-test="${properties.enableChapterDetails == 'true'}">
+
+        <h3>Chapter Details</h3>
+
+        <p>
+            <strong>Chapter Name:</strong>
+            ${properties.chapterName}
+        </p>
+
+        <p>
+            <strong>Chapter Number:</strong>
+            ${properties.chapterNumber}
+        </p>
+
+        <p>
+            <strong>Chapter Description:</strong>
+            ${properties.chapterDescription}
+        </p>
+
+    </div>
+
+</div>

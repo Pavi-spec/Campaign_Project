@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        jcr:primaryType="cq:Dialog"
+        jcr:title="Banner"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <bannerType
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                    fieldLabel="Banner Type"
+                    name="./bannerType"
+                    granite:class="cq-dialog-dropdown-showhide">
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        cq-dialog-dropdown-showhide-target=".banner-option"/>
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <primary
+                            jcr:primaryType="nt:unstructured"
+                            text="Primary"
+                            value="primary"/>
+
+                    <secondary
+                            jcr:primaryType="nt:unstructured"
+                            text="Secondary"
+                            value="secondary"/>
+
+                    <tertiary
+                            jcr:primaryType="nt:unstructured"
+                            text="Tertiary"
+                            value="tertiary"/>
+
+                </items>
+            </bannerType>
+
+
+            <header
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                    jcr:title="Header"
+                    margin="true">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <logo
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                            fieldLabel="Logo"
+                            name="./logo"
+                            rootPath="/content/dam"/>
+
+
+                    <logoAlt
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Logo Alt Text"
+                            name="./logoAlt"/>
+
+                    <navigationItems
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                            fieldLabel="Navigation Items"
+                            composite="{Boolean}true">
+
+                        <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                name="./navigationItems">
+
+                            <items jcr:primaryType="nt:unstructured">
+
+                                <label
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation Label"
+                                        name="./label"/>
+
+                                <link
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Navigation Link"
+                                        name="./link"
+                                        rootPath="/content"/>
+
+                            </items>
+                        </field>
+                    </navigationItems>
+
+
+                    <searchPlaceholder
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Search Placeholder"
+                            name="./searchPlaceholder"/>
+
+
+                    <searchButtonText
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Search Button Text"
+                            name="./searchButtonText"/>
+
+                </items>
+            </header>
+
+
+            <primary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                    granite:class="hide banner-option">
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        showhidetargetvalue="primary"/>
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <primaryTitle
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Primary Title"
+                            name="./primaryTitle"/>
+
+                    <primaryDescription
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                            fieldLabel="Primary Description"
+                            name="./primaryDescription"/>
+
+                    <backgroundColor
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                            fieldLabel="Background Color"
+                            name="./backgroundColor"/>
+
+                </items>
+            </primary>
+
+
+            <secondary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                    granite:class="hide banner-option">
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        showhidetargetvalue="secondary"/>
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <secondaryTitle
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Secondary Title"
+                            name="./secondaryTitle"/>
+
+                    <secondaryDescription
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                            fieldLabel="Secondary Description"
+                            name="./secondaryDescription"/>
+
+                    <secondaryImage
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                            fieldLabel="Secondary Image"
+                            name="./secondaryImage"
+                            rootPath="/content/dam"/>
+
+                    <secondaryImageAlt
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Secondary Image Alt Text"
+                            name="./secondaryImageAlt"/>
+
+                </items>
+            </secondary>
+
+
+            <tertiary
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                    granite:class="hide banner-option">
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        showhidetargetvalue="tertiary"/>
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <contactHeading
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Contact Heading"
+                            name="./contactHeading"/>
+
+
+
+                    <contactNameLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Name Label"
+                            name="./contactNameLabel"/>
+
+                    <contactName
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Name"
+                            name="./contactName"/>
+
+
+                    <contactPhoneLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Phone Label"
+                            name="./contactPhoneLabel"/>
+
+                    <contactPhone
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Phone"
+                            name="./contactPhone"/>
+
+
+
+
+                    <contactEmailLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Email Label"
+                            name="./contactEmailLabel"/>
+
+                    <contactEmail
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Email"
+                            name="./contactEmail"/>
+
+
+
+
+                    <contactAddressLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Address Label"
+                            name="./contactAddressLabel"/>
+
+                    <contactAddress
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                            fieldLabel="Address"
+                            name="./contactAddress"/>
+
+                </items>
+            </tertiary>
+
+
+
+            <footer
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                    jcr:title="Footer"
+                    margin="true">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <footerText
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Footer Text"
+                            name="./footerText"/>
+
+                </items>
+            </footer>
+
+        </items>
+    </content>
+</jcr:root>

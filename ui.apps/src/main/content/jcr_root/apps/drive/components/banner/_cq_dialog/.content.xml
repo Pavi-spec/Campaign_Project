@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Banner"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items
+                jcr:primaryType="nt:unstructured">
+
+            <bannerType
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+
+                    fieldLabel="Select"
+                    name="./bannerType"
+
+                    granite:class="cq-dialog-dropdown-showhide">
+
+                <items
+                        jcr:primaryType="nt:unstructured">
+
+                    <primary
+                            jcr:primaryType="nt:unstructured"
+                            text="Primary"
+                            value="primary"/>
+
+                    <secondary
+                            jcr:primaryType="nt:unstructured"
+                            text="Secondary"
+                            value="secondary"/>
+
+                    <tertiary
+                            jcr:primaryType="nt:unstructured"
+                            text="Tertiary"
+                            value="tertiary"/>
+
+                </items>
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+
+                        cq-dialog-dropdown-showhide-target=".banner-option"/>
+
+            </bannerType>
+
+
+
+            <primaryContainer
+                    jcr:primaryType="nt:unstructured"
+
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+
+                    granite:class="hide banner-option">
+
+                <items
+                        jcr:primaryType="nt:unstructured">
+
+                    <backgroundColor
+                            jcr:primaryType="nt:unstructured"
+
+                            sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+
+                            fieldLabel="Background Color"
+                            name="./backgroundColor"/>
+
+                </items>
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+
+                        showhidetargetvalue="primary"/>
+
+            </primaryContainer>
+
+
+
+            <secondaryContainer
+                    jcr:primaryType="nt:unstructured"
+
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+
+                    granite:class="hide banner-option">
+
+                <items
+                        jcr:primaryType="nt:unstructured">
+
+                    <title
+                            jcr:primaryType="nt:unstructured"
+
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+
+                            fieldLabel="Title"
+                            name="./title"/>
+
+
+
+                    <description
+                            jcr:primaryType="nt:unstructured"
+
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+
+                            fieldLabel="Description"
+                            name="./description"/>
+
+
+                    <image
+                            jcr:primaryType="nt:unstructured"
+
+                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+
+                            fieldLabel="Image"
+                            name="./image"
+
+                            rootPath="/content/dam"/>
+
+                </items>
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+
+                        showhidetargetvalue="secondary"/>
+
+            </secondaryContainer>
+
+
+
+            <tertiaryContainer
+                    jcr:primaryType="nt:unstructured"
+
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
+
+                    granite:class="hide banner-option">
+
+                <items
+                        jcr:primaryType="nt:unstructured">
+
+
+
+
+                    <contactName
+                            jcr:primaryType="nt:unstructured"
+
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+
+                            fieldLabel="Contact Name"
+                            name="./contactName"/>
+
+
+
+
+                    <contactPhone
+                            jcr:primaryType="nt:unstructured"
+
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+
+                            fieldLabel="Contact Phone"
+                            name="./contactPhone"/>
+
+
+
+                    <contactEmail
+                            jcr:primaryType="nt:unstructured"
+
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+
+                            fieldLabel="Contact Email"
+                            name="./contactEmail"/>
+
+
+
+                    <contactAddress
+                            jcr:primaryType="nt:unstructured"
+
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+
+                            fieldLabel="Contact Address"
+                            name="./contactAddress"/>
+
+                </items>
+
+                <granite:data
+                        jcr:primaryType="nt:unstructured"
+
+                        showhidetargetvalue="tertiary"/>
+
+            </tertiaryContainer>
+
+        </items>
+
+    </content>
+
+</jcr:root>

@@ -1,0 +1,2 @@
+#base=js
+employee_chapter_dialog.js
