@@ -1,0 +1,267 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='drive.company-directory'}"/>
+<sly data-sly-use.model="com.drive.core.models.CompanyDirectoryModel"/>
+
+<div class="company-directory">
+
+    <header class="company-directory__header">
+        <div class="company-directory__header-content">
+
+            <span class="company-directory__eyebrow">
+                COMPANY DIRECTORY
+            </span>
+
+            <h1 class="company-directory__title">
+                ${model.companyName}
+            </h1>
+
+            <p data-sly-test="${model.description}"
+               class="company-directory__description">
+                ${model.description}
+            </p>
+
+            <div data-sly-test="${model.location}"
+                 class="company-directory__location">
+
+                <span class="company-directory__location-icon">
+                    📍
+                </span>
+
+                <span>${model.location}</span>
+
+            </div>
+
+        </div>
+    </header>
+
+    <section class="company-directory__departments">
+
+        <div class="company-directory__section-header">
+
+            <span class="company-directory__section-label">
+                ORGANIZATION
+            </span>
+
+            <h2 class="company-directory__section-title">
+                Our Departments
+            </h2>
+
+        </div>
+
+        <div data-sly-test="${model.departments}"
+             data-sly-list.department="${model.departments}"
+             class="departments-list">
+
+            <article class="department-card">
+
+                <div class="department-card__header">
+
+                    <div class="department-card__header-content">
+
+                        <span class="department-card__label">
+                            DEPARTMENT
+                        </span>
+
+                        <h2 class="department-card__title">
+                            ${department.departmentName}
+                        </h2>
+
+                        <div data-sly-test="${department.departmentHead}"
+                             class="department-card__head">
+
+                            <span class="department-card__head-label">
+                                Department Head:
+                            </span>
+
+                            <span>${department.departmentHead}</span>
+
+                        </div>
+
+                        <div data-sly-test="${department.departmentLocation}"
+                             class="department-card__location">
+
+                            <span>📍</span>
+                            <span>${department.departmentLocation}</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="department-card__body">
+
+                    <div data-sly-test="${department.employees}"
+                         data-sly-list.employee="${department.employees}"
+                         class="employees-grid">
+
+                        <article class="employee-card">
+
+                            <div class="employee-card__image-wrapper">
+
+                                <img data-sly-test="${employee.employeeImage}"
+                                     src="${employee.employeeImage}"
+                                     alt="${employee.employeeName}"
+                                     class="employee-card__image"/>
+
+                                <div data-sly-test="${!employee.employeeImage}"
+                                     class="employee-card__image-placeholder">
+
+                                    ${employee.employeeName}
+
+                                </div>
+
+                            </div>
+
+                            <div class="employee-card__content">
+
+                                <h3 class="employee-card__name">
+                                    ${employee.employeeName}
+                                </h3>
+
+                                <p data-sly-test="${employee.designation}"
+                                   class="employee-card__designation">
+
+                                    ${employee.designation}
+
+                                </p>
+
+                                <div class="employee-card__details">
+
+                                    <div data-sly-test="${employee.email}"
+                                         class="employee-card__detail">
+
+                                        <span class="detail-label">
+                                            Email
+                                        </span>
+
+                                        <a href="mailto:${employee.email}"
+                                           class="detail-value">
+
+                                            ${employee.email}
+
+                                        </a>
+
+                                    </div>
+
+                                    <div data-sly-test="${employee.phone}"
+                                         class="employee-card__detail">
+
+                                        <span class="detail-label">
+                                            Phone
+                                        </span>
+
+                                        <a href="tel:${employee.phone}"
+                                           class="detail-value">
+
+                                            ${employee.phone}
+
+                                        </a>
+
+                                    </div>
+
+                                    <div data-sly-test="${employee.experience != null}"
+                                         class="employee-card__detail">
+
+                                        <span class="detail-label">
+                                            Experience
+                                        </span>
+
+                                        <span class="detail-value">
+                                            ${employee.experience} years
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <a data-sly-test="${employee.employeeLink}"
+                                   href="${employee.employeeLink}"
+                                   class="employee-card__profile">
+
+                                    View Profile
+
+                                </a>
+
+                            </div>
+
+                            <div data-sly-test="${employee.projects}"
+                                 class="employee-card__projects">
+
+                                <div class="projects-header">
+
+                                    <span class="projects-header__icon">
+                                        📁
+                                    </span>
+
+                                    <h4>Projects</h4>
+
+                                    <span class="project-count">
+                                        ${employee.projects.size}
+                                    </span>
+
+                                </div>
+
+                                <div class="projects-list"
+                                     data-sly-list.project="${employee.projects}">
+
+                                    <article class="project-card">
+
+                                        <div data-sly-test="${project.projectImage}"
+                                             class="project-card__image-wrapper">
+
+                                            <img src="${project.projectImage}"
+                                                 alt="${project.projectName}"
+                                                 class="project-card__image"/>
+
+                                        </div>
+
+                                        <div class="project-card__content">
+
+                                            <h5 class="project-card__name">
+                                                ${project.projectName}
+                                            </h5>
+
+                                            <p data-sly-test="${project.projectDescription}"
+                                               class="project-card__description">
+
+                                                ${project.projectDescription}
+
+                                            </p>
+
+                                            <a data-sly-test="${project.projectUrl}"
+                                               href="${project.projectUrl}"
+                                               class="project-card__link">
+
+                                                View Project
+
+                                            </a>
+
+                                        </div>
+
+                                    </article>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+        <div data-sly-test="${!model.departments}"
+             class="company-directory__empty">
+
+            <p>No departments have been added yet.</p>
+
+        </div>
+
+    </section>
+
+</div>

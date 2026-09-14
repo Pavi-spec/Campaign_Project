@@ -1,0 +1,36 @@
+<style>
+    .campaign-button-component {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.campaign-button-component .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #1473e6;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.campaign-button-component .btn:hover {
+    background-color: #0d66d0;
+}
+</style>
+
+<div class="campaign-button-component">
+
+    <a
+            href="${properties.link}"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer">
+
+        ${properties.buttonText}
+
+    </a>
+
+</div>

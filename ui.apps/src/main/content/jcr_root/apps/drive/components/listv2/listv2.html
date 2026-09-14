@@ -1,0 +1,62 @@
+<sly data-sly-use.model="com.drive.core.models.ListV2Model"/>
+
+<ul
+        class="cmp-list"
+        id="${model.id}"
+        data-sly-test="${model.items && model.items.size > 0}">
+
+    <li
+            class="cmp-list__item"
+            data-sly-repeat.page="${model.items}">
+
+        <sly data-sly-test="${model.linkItems}">
+
+            <a
+                    class="cmp-list__item-link"
+                    href="${page.path}.html">
+
+                <span class="cmp-list__item-title">
+                    ${page.title || page.navigationTitle || page.name}
+                </span>
+
+            </a>
+
+        </sly>
+
+        <sly data-sly-test="${!model.linkItems}">
+
+            <span class="cmp-list__item-title">
+                ${page.title || page.navigationTitle || page.name}
+            </span>
+
+        </sly>
+
+        <p
+                class="cmp-list__item-description"
+                data-sly-test="${model.showDescription}">
+
+            ${page.description}
+
+        </p>
+
+        <time
+                class="cmp-list__item-date"
+                data-sly-test="${model.showModificationDate}">
+
+            ${page.lastModified.time}
+
+        </time>
+
+    </li>
+
+</ul>
+
+
+
+<div
+        class="cmp-list__empty"
+        data-sly-test="${model.empty}">
+
+    No pages available.
+
+</div>

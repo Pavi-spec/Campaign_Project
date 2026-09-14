@@ -1,0 +1,122 @@
+<sly data-sly-use.model="com.drive.core.models.ListV4Model"/>
+
+<div
+        id="${model.id}"
+        class="cmp-list"
+        data-cmp-is="list">
+
+    <ul
+            class="cmp-list__item-list"
+            data-sly-test="${!model.empty}">
+
+        <sly data-sly-list.item="${model.items}">
+
+            <li class="cmp-list__item">
+
+                <sly data-sly-test="${model.displayItemAsTeaser}">
+
+                    <article class="cmp-list__item-teaser">
+
+                        <h3 class="cmp-list__item-title">
+
+                            <sly data-sly-test="${model.linkItems}">
+
+                                <a
+                                        class="cmp-list__item-link"
+                                        href="${item.url}"
+                                        target="${item.staticItem ? item.linkTarget : null}">
+
+                                    ${item.displayTitle}
+
+                                </a>
+
+                            </sly>
+
+                            <sly data-sly-test="${!model.linkItems}">
+
+                                <span>
+                                    ${item.displayTitle}
+                                </span>
+
+                            </sly>
+
+                        </h3>
+
+                        <p
+                                class="cmp-list__item-description"
+                                data-sly-test="${model.showDescription && item.description}">
+
+                            ${item.description}
+
+                        </p>
+
+                        <time
+                                class="cmp-list__item-date"
+                                data-sly-test="${model.showModificationDate && item.lastModified}">
+
+                            ${'dd MMM yyyy' @ format=item.lastModified}
+
+                        </time>
+
+                    </article>
+
+                </sly>
+
+                <sly data-sly-test="${!model.displayItemAsTeaser}">
+
+                    <sly data-sly-test="${model.linkItems}">
+
+                        <a
+                                class="cmp-list__item-link"
+                                href="${item.url}"
+                                target="${item.staticItem ? item.linkTarget : null}">
+
+                            <span class="cmp-list__item-title">
+                                ${item.displayTitle}
+                            </span>
+
+                        </a>
+
+                    </sly>
+
+                    <sly data-sly-test="${!model.linkItems}">
+
+                        <span class="cmp-list__item-title">
+                            ${item.displayTitle}
+                        </span>
+
+                    </sly>
+
+                    <p
+                            class="cmp-list__item-description"
+                            data-sly-test="${model.showDescription && item.description}">
+
+                        ${item.description}
+
+                    </p>
+
+                    <time
+                            class="cmp-list__item-date"
+                            data-sly-test="${model.showModificationDate && item.lastModified}">
+
+                        ${'dd MMM yyyy' @ format=item.lastModified}
+
+                    </time>
+
+                </sly>
+
+            </li>
+
+        </sly>
+
+    </ul>
+
+    <p
+            class="cmp-list__empty"
+            data-sly-test="${model.empty}">
+
+        No results found.
+
+    </p>
+
+</div>

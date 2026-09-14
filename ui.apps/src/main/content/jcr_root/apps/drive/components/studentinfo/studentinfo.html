@@ -1,0 +1,119 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+
+<sly data-sly-call="${clientlib.css @ categories='drive.studentinfo'}"/>
+
+<sly data-sly-use.model="com.drive.core.models.StudentInfoModel"/>
+
+<div class="student-info">
+
+    <h2 class="student-info__heading">
+        Student Information
+    </h2>
+
+    <div class="student-info__list">
+
+        <sly data-sly-list.student="${model.students}">
+
+            <div class="student-card">
+
+                <!-- Student item title -->
+
+                <h3 class="student-item-title">
+                    Student Info ${studentList.count}
+                </h3>
+
+
+                <!-- Student Basic Information -->
+
+                <button
+                        type="button"
+                        class="student-basic-header"
+                        onclick="toggleStudentAccordion(this)">
+
+                    <span>
+                        Student Basic Information
+                    </span>
+
+                    <span class="student-basic-icon">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="student-basic-content">
+
+                    <p class="student-name">
+                        <strong>Name:</strong>
+                        ${student.studentName}
+                    </p>
+
+                    <p class="student-specialization">
+                        <strong>Specialization:</strong>
+                        ${student.specialization}
+                    </p>
+
+                </div>
+
+
+                <!-- Subject Information -->
+
+                <button
+                        type="button"
+                        class="subject-info-header"
+                        onclick="toggleSubjectAccordion(this)">
+
+                    <span>
+                        Subject Information
+                    </span>
+
+                    <span class="subject-info-icon">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="subject-info-content">
+
+                    <sly data-sly-list.subject="${student.subjects}">
+
+                        <div class="subject-item">
+
+                            <h4 class="subject-name">
+                                ${subject.subjectName}
+                            </h4>
+
+                            <p class="subject-description">
+                                ${subject.subjectDescription}
+                            </p>
+
+                        </div>
+
+                    </sly>
+
+                </div>
+
+
+                <!-- Individual button for each student -->
+
+                <div class="student-button-area">
+
+                    <a
+                            data-sly-test="${student.buttonText}"
+                            href="${student.buttonLink}"
+                            class="student-button">
+
+                        ${student.buttonText}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </sly>
+
+    </div>
+
+</div>
+
+<sly data-sly-call="${clientlib.js @ categories='drive.studentinfo'}"/>

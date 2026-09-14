@@ -1,0 +1,120 @@
+.student-info {
+    max-width: 850px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+}
+
+.student-info__heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.student-card {
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: #ffffff;
+}
+
+.student-item-title {
+    margin: 0;
+    padding: 15px 20px;
+    background: #eeeeee;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.student-basic-header,
+.subject-info-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border: none;
+    background: #f3f3f3;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.subject-info-header {
+    border-top: 1px solid #dddddd;
+    background: #fafafa;
+}
+
+.student-basic-header:hover,
+.subject-info-header:hover {
+    background: #e8e8e8;
+}
+
+.student-basic-icon,
+.subject-info-icon {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.student-basic-content,
+.subject-info-content {
+    display: none;
+    padding: 18px 20px;
+    background: #ffffff;
+}
+
+.student-name,
+.student-specialization {
+    margin: 0 0 12px;
+}
+
+.student-name:last-child,
+.student-specialization:last-child {
+    margin-bottom: 0;
+}
+
+.subject-item {
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #ffffff;
+}
+
+.subject-item:last-child {
+    margin-bottom: 0;
+}
+
+.subject-name {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.subject-description {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.student-button-area {
+    padding: 15px 20px;
+    border-top: 1px solid #dddddd;
+    background: #f5f5f5;
+}
+
+.student-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #1473e6;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.student-button:hover {
+    background: #0d66d0;
+    color: #ffffff;
+    text-decoration: none;
+}

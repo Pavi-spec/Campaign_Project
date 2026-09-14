@@ -1,0 +1,57 @@
+<style>
+    .demo-component {
+        width: 100%;
+        padding: 30px;
+        border: 2px solid #333;
+        box-sizing: border-box;
+    }
+
+    .demo-component h2 {
+        margin-top: 0;
+    }
+
+    .campaign-title-wrapper,
+    .campaign-text-wrapper,
+    .campaign-button-wrapper {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px dashed #999;
+        box-sizing: border-box;
+    }
+</style>
+
+<div class="demo-component">
+
+    <h2>Demo Component</h2>
+
+    <p>${properties.demoText}</p>
+
+    <div class="campaign-title-wrapper">
+
+        <div
+                data-sly-resource="${'campaign-title'
+                @ resourceType='weekend/components/campaign-title'}">
+        </div>
+
+    </div>
+
+    <div class="campaign-text-wrapper">
+
+        <div
+                data-sly-resource="${'campaign-text'
+                @ resourceType='weekend/components/campaign-text'}">
+        </div>
+
+    </div>
+
+    <div class="campaign-button-wrapper">
+
+        <div
+                data-sly-resource="${'campaign-button'
+                @ resourceType='weekend/components/campaign-button'}">
+        </div>
+
+    </div>
+
+</div>

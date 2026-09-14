@@ -1,0 +1,165 @@
+<sly data-sly-use.model="com.drive.core.models.FaqModel"/>
+
+<div style="
+    margin: 0;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+">
+
+    <div style="
+        max-width: 800px;
+        margin: 0 auto;
+    ">
+
+        <h2 style="
+            text-align: center;
+            margin-bottom: 30px;
+            color: #222;
+        ">
+            Information details
+        </h2>
+
+        <sly data-sly-list.item="${model.items}">
+
+            <div style="
+                background: #fff;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                margin-bottom: 12px;
+                overflow: hidden;
+            ">
+
+                <button
+                        type="button"
+                        onclick="toggleAccordion(this)"
+                        style="
+                        width: 100%;
+                        padding: 20px;
+                        border: none;
+                        background: #fff;
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 16px;
+                        font-weight: bold;
+                        text-align: left;
+                    ">
+
+                    <span>
+                        ${item.title}
+                    </span>
+
+                    <span style="
+                        font-size: 24px;
+                        font-weight: normal;
+                    ">
+                        +
+                    </span>
+
+                </button>
+
+                <div style="
+                    display: none;
+                    padding: 20px;
+                    color: #555;
+                    line-height: 1.6;
+                ">
+
+                    <p style="
+                        margin-top: 0;
+                        margin-bottom: 15px;
+                    ">
+                        ${item.description}
+                    </p>
+
+                    <label style="
+                        display: block;
+                        margin-bottom: 6px;
+                        font-weight: bold;
+                    ">
+                        ${item.textFieldLabel}
+                    </label>
+
+                    <input
+                            type="text"
+                            placeholder="${item.textFieldPlaceholder}"
+                            style="
+                            width: 100%;
+                            box-sizing: border-box;
+                            padding: 12px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                            margin-bottom: 15px;
+                            font-size: 14px;
+                        "
+                    >
+
+                    <label style="
+                        display: block;
+                        margin-bottom: 6px;
+                        font-weight: bold;
+                    ">
+                        ${item.textareaLabel}
+                    </label>
+
+                    <textarea
+                            placeholder="${item.textareaPlaceholder}"
+                            rows="4"
+                            style="
+                            width: 100%;
+                            box-sizing: border-box;
+                            padding: 12px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                            margin-bottom: 15px;
+                            font-size: 14px;
+                            resize: vertical;
+                        "
+                    ></textarea>
+
+                    <button
+                            type="button"
+                            style="
+                            padding: 12px 24px;
+                            border: none;
+                            border-radius: 5px;
+                            background: #222;
+                            color: #fff;
+                            cursor: pointer;
+                            font-size: 14px;
+                        ">
+                        ${item.buttonText}
+                    </button>
+
+                </div>
+
+            </div>
+
+        </sly>
+
+    </div>
+
+</div>
+
+<script>
+    function toggleAccordion(button) {
+
+        const content = button.nextElementSibling;
+        const icon = button.querySelector("span:last-child");
+
+        if (content.style.display === "none" ||
+            content.style.display === "") {
+
+            content.style.display = "block";
+            icon.textContent = "−";
+
+        } else {
+
+            content.style.display = "none";
+            icon.textContent = "+";
+
+        }
+    }
+</script>

@@ -1,0 +1,546 @@
+.company-directory {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+    box-sizing: border-box;
+}
+
+.company-directory *,
+.company-directory *::before,
+.company-directory *::after {
+    box-sizing: border-box;
+}
+
+.company-directory__header {
+    width: 100%;
+    padding: 90px 50px;
+    background: linear-gradient(135deg, #111827 0%, #1d2e59 50%, #263b73 100%);
+    color: #ffffff;
+    text-align: center;
+}
+
+.company-directory__header-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.company-directory__eyebrow {
+    display: block;
+    margin: 0 0 18px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d7dce8;
+}
+
+.company-directory__title {
+    margin: 0 0 25px;
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: #ffffff;
+}
+
+.company-directory__description {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    font-size: 20px;
+    line-height: 1.7;
+    font-weight: 400;
+    color: #e5e7eb;
+    text-align: center;
+}
+
+.company-directory__location {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.company-directory__location-icon {
+    font-size: 18px;
+}
+
+.company-directory__departments {
+    width: 100%;
+    padding: 55px 50px 65px;
+    background: #f5f7fb;
+}
+
+.company-directory__section-header {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.company-directory__section-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #526dce;
+}
+
+.company-directory__section-title {
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #172033;
+}
+
+.departments-list {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.department-card {
+    width: 100%;
+    margin: 0 0 30px;
+    background: #ffffff;
+    border: 1px solid #e3e7ef;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(20, 30, 50, 0.07);
+}
+
+.department-card__header {
+    width: 100%;
+    padding: 28px 30px;
+    background: #f9fafc;
+    border-bottom: 1px solid #e5e8ee;
+}
+
+.department-card__header-content {
+    width: 100%;
+}
+
+.department-card__label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #526dce;
+}
+
+.department-card__title {
+    margin: 0 0 14px;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #172033;
+}
+
+.department-card__head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #5b6475;
+}
+
+.department-card__head-label {
+    font-weight: 700;
+    color: #263b73;
+}
+
+.department-card__location {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5b6475;
+}
+
+.department-card__body {
+    width: 100%;
+    padding: 30px;
+}
+
+.employees-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.employee-card {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr);
+    column-gap: 18px;
+    width: 100%;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e1e6ef;
+    border-radius: 15px;
+    box-shadow: 0 4px 14px rgba(20, 30, 50, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.employee-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(20, 30, 50, 0.10);
+}
+
+.employee-card__image-wrapper {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.employee-card__image {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.employee-card__image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    padding: 8px;
+    border-radius: 50%;
+    background: #e8ecf5;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    color: #263b73;
+}
+
+.employee-card__content {
+    min-width: 0;
+}
+
+.employee-card__name {
+    margin: 0 0 5px;
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 800;
+    color: #172033;
+}
+
+.employee-card__designation {
+    margin: 0 0 15px;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #526078;
+}
+
+.employee-card__details {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.employee-card__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #7a8393;
+}
+
+.detail-value {
+    display: block;
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #263b73;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.detail-value:hover {
+    text-decoration: underline;
+}
+
+.employee-card__profile {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #263b73;
+    text-decoration: none;
+}
+
+.employee-card__profile:hover {
+    text-decoration: underline;
+}
+
+.employee-card__projects {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #e8ebf0;
+}
+
+.projects-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 14px;
+}
+
+.projects-header__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    background: #eef1fa;
+    font-size: 16px;
+}
+
+.projects-header h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 800;
+    color: #172033;
+}
+
+.project-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 20px;
+    background: #e8ecf5;
+    font-size: 10px;
+    font-weight: 700;
+    color: #263b73;
+}
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.project-card {
+    width: 100%;
+    overflow: hidden;
+    background: #f9fafc;
+    border: 1px solid #e4e8ee;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(20, 30, 50, 0.08);
+}
+
+.project-card__image-wrapper {
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+}
+
+.project-card__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-card__content {
+    padding: 13px;
+}
+
+.project-card__name {
+    margin: 0 0 7px;
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 800;
+    color: #172033;
+}
+
+.project-card__description {
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #5b6475;
+}
+
+.project-card__link {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #263b73;
+    text-decoration: none;
+}
+
+.project-card__link:hover {
+    text-decoration: underline;
+}
+
+.company-directory__empty {
+    width: 100%;
+    padding: 45px 20px;
+    background: #ffffff;
+    border: 1px dashed #cdd3df;
+    border-radius: 15px;
+    text-align: center;
+    color: #6b7280;
+}
+
+.company-directory__empty p {
+    margin: 0;
+    font-size: 15px;
+}
+
+@media (max-width: 1000px) {
+    .company-directory__header {
+        padding: 70px 35px;
+    }
+
+    .company-directory__departments {
+        padding: 45px 30px 55px;
+    }
+
+    .department-card__body {
+        padding: 25px;
+    }
+
+    .employees-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .company-directory__header {
+        padding: 55px 20px;
+    }
+
+    .company-directory__title {
+        font-size: 48px;
+        letter-spacing: -1px;
+    }
+
+    .company-directory__description {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .company-directory__departments {
+        padding: 35px 15px 45px;
+    }
+
+    .department-card__header {
+        padding: 22px;
+    }
+
+    .department-card__body {
+        padding: 18px;
+    }
+
+    .employees-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .employee-card {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .employee-card__image-wrapper {
+        width: 65px;
+        height: 65px;
+    }
+
+    .employee-card__image {
+        width: 65px;
+        height: 65px;
+    }
+
+    .employee-card__image-placeholder {
+        width: 65px;
+        height: 65px;
+    }
+
+    .projects-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 450px) {
+    .employees-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .employee-card {
+        padding: 12px;
+    }
+
+    .employee-card__name {
+        font-size: 15px;
+    }
+
+    .employee-card__designation {
+        font-size: 11px;
+    }
+
+    .detail-label {
+        font-size: 8px;
+    }
+
+    .detail-value {
+        font-size: 10px;
+    }
+
+    .employee-card__profile {
+        font-size: 10px;
+    }
+
+    .projects-header h4 {
+        font-size: 13px;
+    }
+}
+
+.validation-error {
+    color: red !important;
+    border-color: red !important;
+    outline: 1px solid red;
+}
