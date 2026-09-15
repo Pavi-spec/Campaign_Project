@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="FAQ"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <accordionItems
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                    fieldLabel="General Information"
+                    composite="{Boolean}true">
+
+                <field
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        name="./accordionItems">
+
+                    <items jcr:primaryType="nt:unstructured">
+
+                        <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Info Title"
+                                name="./title"/>
+
+                        <description
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldLabel="Info Description"
+                                name="./description"/>
+
+                        <details
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                fieldLabel="Info Fields"
+                                composite="{Boolean}true">
+
+                            <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./details">
+
+                                <items jcr:primaryType="nt:unstructured">
+
+                                    <fieldType
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Field Type"
+                                            name="./fieldType">
+
+                                        <items jcr:primaryType="nt:unstructured">
+
+                                            <text
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Text Field"
+                                                    value="text"/>
+
+                                            <number
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Number Field"
+                                                    value="number"/>
+
+                                            <textarea
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Text Area"
+                                                    value="textarea"/>
+
+                                        </items>
+
+                                    </fieldType>
+
+                                    <label
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Label"
+                                            name="./label"/>
+
+                                    <placeholder
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Placeholder"
+                                            name="./placeholder"/>
+
+                                </items>
+
+                            </field>
+
+                        </details>
+
+                    </items>
+
+                </field>
+
+            </accordionItems>
+
+        </items>
+
+    </content>
+
+</jcr:root>

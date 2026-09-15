@@ -14,16 +14,16 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 )
 public class FaqModel {
 
-    @ChildResource(name = "accordionItems")
-    private Resource accordionItems;
+    @ChildResource(name = "courseDetails")
+    private Resource courseDetails;
 
     public List<FaqItem> getItems() {
 
         List<FaqItem> items = new ArrayList<>();
 
-        if (accordionItems != null) {
+        if (courseDetails != null) {
 
-            for (Resource child : accordionItems.getChildren()) {
+            for (Resource child : courseDetails.getChildren()) {
 
                 items.add(new FaqItem(child));
             }
@@ -45,34 +45,10 @@ public class FaqModel {
                     .get("title", String.class);
         }
 
-        public String getDescription() {
+        public String getContent() {
             return resource.getValueMap()
-                    .get("description", String.class);
-        }
-
-        public String getTextFieldLabel() {
-            return resource.getValueMap()
-                    .get("textFieldLabel", String.class);
-        }
-
-        public String getTextFieldPlaceholder() {
-            return resource.getValueMap()
-                    .get("textFieldPlaceholder", String.class);
-        }
-
-        public String getTextareaLabel() {
-            return resource.getValueMap()
-                    .get("textareaLabel", String.class);
-        }
-
-        public String getTextareaPlaceholder() {
-            return resource.getValueMap()
-                    .get("textareaPlaceholder", String.class);
-        }
-
-        public String getButtonText() {
-            return resource.getValueMap()
-                    .get("buttonText", String.class);
+                    .get("content", String.class);
         }
     }
 }
+

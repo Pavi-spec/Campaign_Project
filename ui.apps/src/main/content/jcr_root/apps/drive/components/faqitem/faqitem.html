@@ -1,0 +1,107 @@
+<sly data-sly-use.model="com.drive.core.models.FaqItemModel"/>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='drive.faqitem'}"/>
+
+<div class="faq-item-container">
+
+    <div class="faq-item-wrapper">
+
+        <h2 class="faq-heading">
+            Student Information
+        </h2>
+
+        <!-- OUTER MULTIFIELD -->
+        <sly data-sly-list.item="${model.items}">
+
+            <div class="faq-item">
+
+                <!-- Accordion Header -->
+                <button
+                        type="button"
+                        class="subject-info-button"
+                        onclick="toggleSubjectAccordion(this)">
+
+                    <span>${item.title}</span>
+
+                    <span class="subject-info-icon">+</span>
+
+                </button>
+
+
+                <!-- Accordion Content -->
+                <div class="subject-info-content">
+
+                    <p class="faq-description">
+                        ${item.description}
+                    </p>
+
+
+                    <!-- INNER MULTIFIELD -->
+                    <sly data-sly-list.detail="${item.details}">
+
+                        <div class="faq-detail">
+
+                            <label class="faq-label">
+                                ${detail.label}
+                            </label>
+
+
+                            <!-- TEXT FIELD -->
+                            <sly data-sly-test="${detail.fieldType == 'text'}">
+
+                                <input
+                                        type="text"
+                                        class="faq-text-field"
+                                        placeholder="${detail.placeholder}"/>
+
+                            </sly>
+
+
+                            <!-- NUMBER FIELD -->
+                            <sly data-sly-test="${detail.fieldType == 'number'}">
+
+                                <input
+                                        type="number"
+                                        class="faq-text-field"
+                                        placeholder="${detail.placeholder}"/>
+
+                            </sly>
+
+
+                            <!-- TEXT AREA -->
+                            <sly data-sly-test="${detail.fieldType == 'textarea'}">
+
+                                <textarea
+                                        class="faq-textarea"
+                                        rows="4"
+                                        placeholder="${detail.placeholder}">
+                                </textarea>
+
+                            </sly>
+
+                        </div>
+
+                    </sly>
+
+
+                    <!-- CAMPAIGN BUTTON -->
+                    <div class="student-button-area">
+
+                        <sly data-sly-set.buttonName="${'button{0}' @ format=itemList.index}"/>
+
+                        <sly data-sly-resource="${buttonName @ resourceType='drive/components/campaign-button'}"/>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </sly>
+
+    </div>
+
+</div>
+
+<sly data-sly-call="${clientlib.js @ categories='drive.faqitem'}"/>
