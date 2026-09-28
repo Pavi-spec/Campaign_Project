@@ -32,7 +32,7 @@
                     fieldLabel="Employee Email"
                     name="./employeeEmail"/>
 
-            <!-- CHECKBOX -->
+
             <enableChapterDetails
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -47,7 +47,6 @@
                         cq-dialog-checkbox-showhide-target=".chapter-details-showhide"/>
             </enableChapterDetails>
 
-            <!-- CHAPTER DETAILS -->
             <chapterDetails
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/container"

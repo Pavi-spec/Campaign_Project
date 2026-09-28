@@ -1,0 +1,107 @@
+<h1>Page Information Component Details</h1>
+<div
+        class="page-info"
+        data-sly-use.model="com.drive.core.models.PageInfoModel">
+
+    <h2>Page Information</h2>
+
+    <h3>Current Resource</h3>
+
+    <p>
+        <strong>Resource Path:</strong>
+        ${model.resourcePath}
+    </p>
+
+    <p>
+        <strong>Resource Name:</strong>
+        ${model.resourceName}
+    </p>
+
+    <p>
+        <strong>Resource Type:</strong>
+        ${model.resourceType}
+    </p>
+
+    <h3>Retrieved Resource</h3>
+
+    <p>
+        <strong>Path:</strong>
+        ${model.retrievedResourcePath}
+    </p>
+
+    <p>
+        <strong>Name:</strong>
+        ${model.retrievedResourceName}
+    </p>
+
+    <p>
+        <strong>Status:</strong>
+        ${model.resourceStatus}
+    </p>
+
+    <h3>Current Page</h3>
+
+    <p>
+        <strong>Page Path:</strong>
+        ${model.pagePath}
+    </p>
+
+    <p>
+        <strong>Page Name:</strong>
+        ${model.pageName}
+    </p>
+
+    <p>
+        <strong>Page Title:</strong>
+        ${model.pageTitle}
+    </p>
+
+    <p>
+        <strong>Parent Page Path:</strong>
+        ${model.parentPagePath}
+    </p>
+
+    <p>
+        <strong>Child Page Count:</strong>
+        ${model.childPageCount}
+    </p>
+
+    <p>
+        <strong>Page Depth:</strong>
+        ${model.pageDepth}
+    </p>
+
+    <h3>Page Properties</h3>
+
+    <p>
+        <strong>jcr:title:</strong>
+        ${model.jcrTitle}
+    </p>
+
+    <p>
+        <strong>jcr:description:</strong>
+        ${model.jcrDescription}
+    </p>
+
+    <h3>Parent Resource</h3>
+
+    <p>
+        <strong>Parent Resource Path:</strong>
+        ${model.parentResourcePath}
+    </p>
+
+    <h3>Page Content Resource</h3>
+
+    <p>
+        <strong>jcr:content Path:</strong>
+        ${model.contentResourcePath}
+    </p>
+
+    <h3>Specific Page</h3>
+
+    <p>
+        <strong>Test Page Title:</strong>
+        ${model.requestedPageTitle}
+    </p>
+
+</div>

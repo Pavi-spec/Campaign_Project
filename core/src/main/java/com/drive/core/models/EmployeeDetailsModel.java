@@ -1,62 +1,18 @@
 package com.drive.core.models;
 
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.DefaultInjectionStrategy;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+public interface EmployeeDetailsModel {
 
-@Model(
-        adaptables = Resource.class,
-        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
-)
-public class EmployeeDetailsModel {
+    String getEmployeeName();
 
-    @ValueMapValue
-    private String employeeName;
+    String getEmployeeRole();
 
-    @ValueMapValue
-    private String employeeRole;
+    String getEmployeeEmail();
 
-    @ValueMapValue
-    private String employeeEmail;
+    boolean isEnableChapterDetails();
 
-    @ValueMapValue
-    private boolean enableChapterDetails;
+    String getChapterName();
 
-    @ValueMapValue
-    private String chapterName;
+    String getChapterNumber();
 
-    @ValueMapValue
-    private String chapterNumber;
-
-    @ValueMapValue
-    private String chapterDescription;
-
-    public String getEmployeeName() {
-        return employeeName;
-    }
-
-    public String getEmployeeRole() {
-        return employeeRole;
-    }
-
-    public String getEmployeeEmail() {
-        return employeeEmail;
-    }
-
-    public boolean isEnableChapterDetails() {
-        return enableChapterDetails;
-    }
-
-    public String getChapterName() {
-        return chapterName;
-    }
-
-    public String getChapterNumber() {
-        return chapterNumber;
-    }
-
-    public String getChapterDescription() {
-        return chapterDescription;
-    }
+    String getChapterDescription();
 }

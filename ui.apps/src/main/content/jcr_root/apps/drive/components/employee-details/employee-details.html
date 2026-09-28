@@ -1,41 +1,45 @@
-<div class="employee-details">
+<sly data-sly-use.employee="com.drive.core.models.EmployeeDetailsModel">
 
-    <h2>Employee Details</h2>
 
-    <p>
-        <strong>Employee Name:</strong>
-        ${properties.employeeName}
-    </p>
+    <div class="employee-details">
 
-    <p>
-        <strong>Employee Role:</strong>
-        ${properties.employeeRole}
-    </p>
-
-    <p>
-        <strong>Employee Email:</strong>
-        ${properties.employeeEmail}
-    </p>
-
-    <div data-sly-test="${properties.enableChapterDetails == 'true'}">
-
-        <h3>Chapter Details</h3>
+        <h2>Employee Details</h2>
 
         <p>
-            <strong>Chapter Name:</strong>
-            ${properties.chapterName}
+            <strong>Employee Name:</strong>
+            ${employee.employeeName}
         </p>
 
         <p>
-            <strong>Chapter Number:</strong>
-            ${properties.chapterNumber}
+            <strong>Employee Role:</strong>
+            ${employee.employeeRole}
         </p>
 
         <p>
-            <strong>Chapter Description:</strong>
-            ${properties.chapterDescription}
+            <strong>Employee Email:</strong>
+            ${employee.employeeEmail}
         </p>
+
+        <div data-sly-test="${employee.enableChapterDetails}">
+
+            <h3>Chapter Details</h3>
+
+            <p>
+                <strong>Chapter Name:</strong>
+                ${employee.chapterName}
+            </p>
+
+            <p>
+                <strong>Chapter Number:</strong>
+                ${employee.chapterNumber}
+            </p>
+
+            <p>
+                <strong>Chapter Description:</strong>
+                ${employee.chapterDescription}
+            </p>
+
+        </div>
 
     </div>
 
-</div>

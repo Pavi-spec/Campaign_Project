@@ -11,12 +11,12 @@
             Student Information
         </h2>
 
-        <!-- OUTER MULTIFIELD -->
+
         <sly data-sly-list.item="${model.items}">
 
             <div class="faq-item">
 
-                <!-- Accordion Header -->
+
                 <button
                         type="button"
                         class="subject-info-button"
@@ -29,7 +29,7 @@
                 </button>
 
 
-                <!-- Accordion Content -->
+
                 <div class="subject-info-content">
 
                     <p class="faq-description">
@@ -37,7 +37,6 @@
                     </p>
 
 
-                    <!-- INNER MULTIFIELD -->
                     <sly data-sly-list.detail="${item.details}">
 
                         <div class="faq-detail">
@@ -47,7 +46,6 @@
                             </label>
 
 
-                            <!-- TEXT FIELD -->
                             <sly data-sly-test="${detail.fieldType == 'text'}">
 
                                 <input
@@ -58,7 +56,6 @@
                             </sly>
 
 
-                            <!-- NUMBER FIELD -->
                             <sly data-sly-test="${detail.fieldType == 'number'}">
 
                                 <input
@@ -69,7 +66,6 @@
                             </sly>
 
 
-                            <!-- TEXT AREA -->
                             <sly data-sly-test="${detail.fieldType == 'textarea'}">
 
                                 <textarea
@@ -85,7 +81,6 @@
                     </sly>
 
 
-                    <!-- CAMPAIGN BUTTON -->
                     <div class="student-button-area">
 
                         <sly data-sly-set.buttonName="${'button{0}' @ format=itemList.index}"/>

@@ -1,0 +1,66 @@
+<sly data-sly-use.login="com.drive.core.models.LoginModel"
+     data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='login'}">
+</sly>
+
+<div class="login-component">
+
+    <div class="login-card">
+
+        <div class="login-header">
+
+            <h2>Login</h2>
+
+            <p>
+                Enter your credentials to continue
+            </p>
+
+        </div>
+
+
+        <form
+                class="login-form"
+                data-login-form
+                novalidate>
+
+
+            <div
+                    class="login-field"
+                    data-sly-list.field="${login.fields}">
+
+                <label for="login-${fieldList.index}">
+                    ${field.fieldLabel}
+                </label>
+
+
+                <input
+                        id="login-${fieldList.index}"
+                        type="text"
+                        placeholder="${field.placeholder}"
+                        class="login-input"
+                        data-login-field
+                        data-field-type="${field.fieldType}" />
+
+
+                <div
+                        class="field-error"
+                        data-field-error="${field.fieldType}">
+                </div>
+
+            </div>
+
+
+            <button
+                    type="submit"
+                    class="login-button">
+
+                ${login.buttonText}
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+

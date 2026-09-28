@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        jcr:primaryType="cq:Component"
+        jcr:title="CQ Edit Config"
+        componentGroup="Drive Components">
+
+    <cq:editConfig
+            jcr:primaryType="cq:EditConfig"
+            cq:actions="[edit,delete,insert,copymove]">
+
+        <cq:listeners
+                jcr:primaryType="cq:EditListenersConfig"
+                afteredit="REFRESH_SELF"
+                afterinsert="REFRESH_PAGE"
+                aftermove="REFRESH_PAGE"
+                afterdelete="REFRESH_PAGE"/>
+
+        <cq:inplaceEditing
+                jcr:primaryType="cq:InplaceEditingConfig"
+                active="{Boolean}true"
+                editorType="plaintext"
+                textPropertyName="text"
+                editElementQuery="h2"/>
+
+    </cq:editConfig>
+
+</jcr:root>
