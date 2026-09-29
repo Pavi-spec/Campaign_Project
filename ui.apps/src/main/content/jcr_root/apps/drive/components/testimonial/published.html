@@ -1,0 +1,131 @@
+<sly data-sly-use.model="com.drive.core.models.TestimonialModel"/>
+
+<section class="testimonial-carousel">
+
+    <h2 class="testimonial-carousel__title">
+        ${model.title}
+    </h2>
+
+    <div class="testimonial-carousel__viewport">
+
+        <div
+                class="testimonial-carousel__track"
+                data-sly-list.item="${model.testimonials}">
+
+            <article
+                    class="testimonial-card"
+                    tabindex="0"
+                    role="button"
+                    data-testimonial-card>
+
+                <h3 class="testimonial-card__name">
+                    ${item.name}
+                </h3>
+
+                <div class="testimonial-card__rating">
+
+                    <span class="testimonial-card__rating--filled">
+                        ${item.filledStars}
+                    </span>
+
+                    <span class="testimonial-card__rating--empty">
+                        ${item.emptyStars}
+                    </span>
+
+                </div>
+
+                <p class="testimonial-card__review">
+                    ${item.review}
+                </p>
+
+                <div class="testimonial-card__footer">
+
+                    <strong>
+                        ${item.source}
+                    </strong>
+
+                    <span>
+                        ${item.date}
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+    <button
+            type="button"
+            class="testimonial-carousel__previous"
+            aria-label="Previous testimonial">
+        ←
+    </button>
+
+    <button
+            type="button"
+            class="testimonial-carousel__next"
+            aria-label="Next testimonial">
+        →
+    </button>
+
+
+
+    <div
+            class="testimonial-modal"
+            data-testimonial-modal
+            aria-hidden="true">
+
+        <div
+                class="testimonial-modal__content"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="testimonial-modal-name">
+
+            <button
+                    type="button"
+                    class="testimonial-modal__close"
+                    data-testimonial-close
+                    aria-label="Close">
+                ×
+            </button>
+
+            <h2
+                    id="testimonial-modal-name"
+                    class="testimonial-modal__name"
+                    data-modal-name>
+            </h2>
+
+            <div class="testimonial-modal__rating">
+
+                <span
+                        class="testimonial-modal__rating--filled"
+                        data-modal-filled-stars>
+                </span>
+
+                <span
+                        class="testimonial-modal__rating--empty"
+                        data-modal-empty-stars>
+                </span>
+
+            </div>
+
+            <p
+                    class="testimonial-modal__review"
+                    data-modal-review>
+            </p>
+
+            <div class="testimonial-modal__footer">
+
+                <strong data-modal-source></strong>
+
+                <span data-modal-date></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

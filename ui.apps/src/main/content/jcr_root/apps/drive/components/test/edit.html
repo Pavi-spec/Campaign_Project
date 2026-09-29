@@ -1,0 +1,139 @@
+<sly
+        data-sly-use.model="com.drive.core.models.TestimonialModel"/>
+
+
+<div class="testimonial-edit-preview">
+
+    <h2 class="testimonial-edit-preview__title">
+
+        ${model.title}
+
+    </h2>
+
+    <div class="testimonial-edit-preview__content">
+
+
+        <button
+                type="button"
+                class="testimonial-edit-preview__arrow testimonial-edit-preview__arrow--previous"
+                aria-label="Previous testimonial">
+
+            ←
+
+        </button>
+
+
+        <div class="testimonial-edit-preview__slide">
+
+
+            <div
+                    data-sly-list.item="${model.testimonials}">
+
+                <div
+                        data-sly-test="${itemList.first}"
+                        class="testimonial-edit-preview__details">
+
+
+                    <h2 class="testimonial-edit-preview__name">
+
+                        ${item.name}
+
+                    </h2>
+
+
+                    <div class="testimonial-edit-preview__rating">
+
+
+                        <span class="testimonial-edit-preview__filled-stars">
+
+                            ${item.filledStars}
+
+                        </span>
+
+
+                        <span class="testimonial-edit-preview__empty-stars">
+
+                            ${item.emptyStars}
+
+                        </span>
+
+
+                    </div>
+
+
+                    <p class="testimonial-edit-preview__review">
+
+                        ${item.review}
+
+                    </p>
+
+
+                    <div class="testimonial-edit-preview__source">
+
+                        ${item.source}
+
+                    </div>
+
+
+                    <div class="testimonial-edit-preview__date">
+
+                        ${item.date}
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                    data-sly-test="${model.testimonials.size == 0}"
+                    class="testimonial-edit-preview__empty">
+
+                <p>
+
+                    Add testimonials using the dialog.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+                type="button"
+                class="testimonial-edit-preview__arrow testimonial-edit-preview__arrow--next"
+                aria-label="Next testimonial">
+
+            →
+
+        </button>
+
+
+    </div>
+
+
+    <div
+            data-sly-test="${model.testimonials.size > 0}"
+            class="testimonial-edit-preview__dots">
+
+
+        <sly data-sly-list.item="${model.testimonials}">
+
+
+            <span
+                    class="testimonial-edit-preview__dot ${itemList.first ? 'testimonial-edit-preview__dot--active' : ''}">
+            </span>
+
+
+        </sly>
+
+
+    </div>
+
+
+</div>

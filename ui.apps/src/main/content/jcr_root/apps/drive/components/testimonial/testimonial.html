@@ -1,0 +1,14 @@
+<sly
+        data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+        data-sly-call="${clientlib.css @ categories='drive.testimonial'}"/>
+
+<sly data-sly-test="${wcmmode.edit}">
+    <sly data-sly-include="edit.html"/>
+</sly>
+
+<sly data-sly-test="${!wcmmode.edit}">
+    <sly data-sly-include="published.html"/>
+</sly>
+
+<sly
+        data-sly-call="${clientlib.js @ categories='drive.testimonial'}"/>
