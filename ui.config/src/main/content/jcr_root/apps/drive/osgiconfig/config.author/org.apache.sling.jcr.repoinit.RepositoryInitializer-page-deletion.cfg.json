@@ -1,0 +1,5 @@
+{
+  "scripts": [
+    "create service user pageDeletionService with forced path system/cq:services/drive\n\nset principal ACL for pageDeletionService\n    allow jcr:read,rep:write,jcr:versionManagement,crx:replicate on /content/drive\nend"
+  ]
+}

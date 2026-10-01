@@ -43,9 +43,11 @@
                         </goals>
                         <configuration>
                             <bnd><![CDATA[
+Export-Package: com.drive.core.models.*
 Import-Package: javax.annotation;version=0.0.0,*
-                                ]]></bnd>
+    ]]></bnd>
                         </configuration>
+
                     </execution>
                 </executions>
             </plugin>
