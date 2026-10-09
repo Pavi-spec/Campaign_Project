@@ -1,5 +1,5 @@
 <style>
-    .campaign-button-component {
+    .campaign-text-component {
         width: 100%;
         min-height: 180px;
         border: 2px solid #1473e6;
@@ -11,16 +11,16 @@
 
         padding: 30px;
     }
+
+    .campaign-text-component p {
+        margin: 0;
+        font-size: 20px;
+        text-align: center;
+    }
 </style>
 
-<div class="campaign-button-component">
+<div class="campaign-text-component">
 
-    <a
-            href="${properties.link}.html"
-            class="btn btn-primary">
-
-        ${properties.buttonText}
-
-    </a>
+    <p>${properties.text}</p>
 
 </div>

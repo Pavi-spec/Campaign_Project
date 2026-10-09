@@ -1,0 +1,86 @@
+<style>
+.reusable-component {
+width: 100%;
+padding: 30px;
+border: 1px solid #d5d5d5;
+border-radius: 8px;
+box-sizing: border-box;
+background: #ffffff;
+}
+
+
+
+.reusable-component h2 {
+margin: 0 0 15px;
+}
+
+.reusable-component p {
+margin: 0 0 20px;
+line-height: 1.6;
+}
+
+.reusable-component__image {
+display: block;
+max-width: 100%;
+height: auto;
+margin: 20px 0;
+}
+
+
+.campaign-title-wrapper {
+width: 100%;
+margin-top: 25px;
+padding: 20px;
+border: 1px dashed #999;
+border-radius: 6px;
+box-sizing: border-box;
+}
+
+
+.campaign-text-wrapper {
+width: 100%;
+margin-top: 20px;
+padding: 20px;
+border: 1px dashed #999;
+border-radius: 6px;
+box-sizing: border-box;
+}
+</style>
+
+<div class="reusable-component">
+
+    <h2>${properties.title}</h2>
+
+    <p>${properties.text}</p>
+
+    <img
+            src="${properties.image}"
+            alt="${properties.title}"
+            class="reusable-component__image"
+    />
+
+    <div class="campaign-title-wrapper">
+
+        <div
+                data-sly-resource="${'demo-title'
+                @ resourceType='drive/components/campaign-title'}">
+        </div>
+
+    </div>
+
+    <div class="campaign-text-wrapper">
+
+        <div
+                data-sly-resource="${'text'
+                @ resourceType='drive/components/campaign_text'}">
+        </div>
+
+    </div>
+
+</div>
+
+<div
+        data-sly-test="${wcmmode.edit && !properties.title && !properties.text && !properties.image}"
+        class="cq-placeholder"
+        data-emptytext="Reusable Component">
+</div>

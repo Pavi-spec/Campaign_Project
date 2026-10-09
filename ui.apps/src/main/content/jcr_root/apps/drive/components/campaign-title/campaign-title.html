@@ -1,0 +1,28 @@
+<style>
+    .campaign-title {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid #1473e6;
+        box-sizing: border-box;
+    }
+
+    .campaign-title h2 {
+        margin: 0;
+        font-size: 24px;
+        text-align: center;
+    }
+</style>
+
+<div
+        class="campaign-title"
+        data-sly-test="${properties.title}">
+
+    <h2>${properties.title}</h2>
+
+</div>
+
+<div
+        data-sly-test="${wcmmode.edit && !properties.title}"
+        class="cq-placeholder"
+        data-emptytext="Campaign Title">
+</div>

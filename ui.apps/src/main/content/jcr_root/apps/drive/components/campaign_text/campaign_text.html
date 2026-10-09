@@ -1,0 +1,28 @@
+<style>
+    .campaign-text-component {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid #1473e6;
+        box-sizing: border-box;
+    }
+
+    .campaign-text-component p {
+        margin: 0;
+        font-size: 18px;
+        text-align: center;
+    }
+</style>
+
+<div
+        class="campaign-text-component"
+        data-sly-test="${properties.text}">
+
+    <p>${properties.text}</p>
+
+</div>
+
+<div
+        data-sly-test="${wcmmode.edit && !properties.text}"
+        class="cq-placeholder"
+        data-emptytext="Campaign Text">
+</div>
