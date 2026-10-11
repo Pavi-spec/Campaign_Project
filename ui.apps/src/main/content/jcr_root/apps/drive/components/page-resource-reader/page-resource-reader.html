@@ -1,0 +1,122 @@
+﻿<sly data-sly-use.model="com.drive.core.models.PageResourceReaderModel"></sly>
+
+<div class="page-resource-reader">
+
+    <h2>Page Details</h2>
+
+    <p>
+        <strong>Page Path:</strong>
+        <span>${model.pagePath}</span>
+    </p>
+
+    <p>
+        <strong>Page Title:</strong>
+        <span>${model.pageTitle}</span>
+    </p>
+
+    <p>
+        <strong>Page Description:</strong>
+        <span>${model.pageDescription}</span>
+    </p>
+
+    <h2>Components Stored on This Page</h2>
+
+    <div data-sly-test="${model.componentsEmpty}">
+        No components found on the selected page.
+    </div>
+
+    <div data-sly-list.component="${model.components}">
+
+        <section class="component-details">
+
+            <h3>Component: ${component.name}</h3>
+
+            <p>
+                <strong>Resource Path:</strong>
+                ${component.path}
+            </p>
+
+            <p>
+                <strong>Resource Type:</strong>
+                ${component.resourceType}
+            </p>
+
+            <h4>Stored Properties</h4>
+
+            <ul data-sly-list.property="${component.properties}">
+                <li>
+                    <strong>${property.name}:</strong>
+                    ${property.value}
+                </li>
+            </ul>
+
+        </section>
+
+    </div>
+
+    <!-- Child Page Details -->
+
+    <h2>Child Page Details</h2>
+
+    <div data-sly-test="${model.componentsEmpty}">
+        No child pages found under the selected page.
+    </div>
+
+    <div data-sly-list.child="${model.childPages}">
+
+        <section class="child-page-details">
+
+            <h3>Child Page: ${child.title}</h3>
+
+            <p>
+                <strong>Page Path:</strong>
+                ${child.path}
+            </p>
+
+            <p>
+                <strong>Page Description:</strong>
+                ${child.description}
+            </p>
+
+            <h4>Components Stored on This Child Page</h4>
+
+            <div data-sly-test="${!model.childPages}">
+                No components found on this child page.
+            </div>
+
+            <div data-sly-list.component="${child.components}">
+
+                <section class="component-details">
+
+                    <h3>Component: ${component.name}</h3>
+
+                    <p>
+                        <strong>Resource Path:</strong>
+                        ${component.path}
+                    </p>
+
+                    <p>
+                        <strong>Resource Type:</strong>
+                        ${component.resourceType}
+                    </p>
+
+                    <h3>Stored Properties</h3>
+
+                    <ul data-sly-list.property="${component.properties}">
+                        <li>
+                            <strong>${property.name}:</strong>
+                            ${property.value}
+                        </li>
+                    </ul>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+

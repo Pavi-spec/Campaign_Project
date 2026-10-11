@@ -48,16 +48,20 @@ public class HeroModel {
     private void formatDateTime() {
 
         if (dateTime == null) {
+            formattedDateTime = "";
             return;
         }
 
         SimpleDateFormat formatter =
                 new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
+        formatter.setTimeZone(
+                java.util.TimeZone.getTimeZone("Asia/Kolkata")
+        );
+
         formattedDateTime =
                 formatter.format(dateTime.getTime());
     }
-
     public String getTitle() {
         return title;
     }
