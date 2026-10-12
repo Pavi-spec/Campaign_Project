@@ -1,0 +1,6 @@
+Multiplication Feature
+
+Example:
+10 * 5 = 50
+
+Branch: multiplication
