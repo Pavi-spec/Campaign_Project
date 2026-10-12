@@ -1,0 +1,28 @@
+
+<sly data-sly-use.model="com.drive.core.models.CalculatorModel"/>
+
+<div class="calculator">
+
+    <h2>Calculator</h2>
+
+    <p>
+        Number 1: <strong>${model.number1}</strong>
+    </p>
+
+    <p>
+        Number 2: <strong>${model.number2}</strong>
+    </p>
+
+    <p>
+        Operation: <strong>${model.operation}</strong>
+    </p>
+
+    <p data-sly-test="${model.result}">
+        Result: <strong>${model.result}</strong>
+    </p>
+
+    <p data-sly-test="${model.message}">
+        Message: ${model.message}
+    </p>
+
+</div>
