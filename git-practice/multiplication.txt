@@ -1,6 +1,3 @@
-Multiplication Feature
-
-This feature demonstrates multiplication.
 
 Example:
 10 * 5 = 50
