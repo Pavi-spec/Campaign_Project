@@ -1,0 +1,10 @@
+Subtraction Feature
+
+The subtraction operation calculates the difference between two numbers.
+
+Example:
+50 - 20 = 30
+
+Input: 50, 20
+Operation: Subtraction
+Result: 30
