@@ -1,0 +1,5 @@
+{
+  "scripts": [
+    "create service user data-reader\nset ACL for data-reader\n    allow jcr:read on /content/drive\nend"
+  ]
+}

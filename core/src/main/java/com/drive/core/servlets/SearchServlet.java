@@ -15,8 +15,14 @@ import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
 
-@Component(service = Servlet.class)
-@SlingServletPaths(value = {"/drive/search"})
+@Component(
+        service = Servlet.class,
+        property = {
+                "sling.servlet.methods=GET",
+                "sling.servlet.paths=/bin/drive/search"
+        }
+)
+
 public class SearchServlet extends SlingAllMethodsServlet {
 
     private static final Logger LOG =
