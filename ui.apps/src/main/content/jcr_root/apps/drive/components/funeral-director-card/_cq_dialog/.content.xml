@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Funeral Director Card"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+
+                <items jcr:primaryType="nt:unstructured">
+                    <details
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Director Details"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <image
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Director Image"
+                                    name="./image"
+                                    rootPath="/content/dam"/>
+
+                            <name
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Location Name"
+                                    name="./name"
+                                    value="Sunshine"/>
+
+                            <address
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Address"
+                                    name="./address"
+                                    emptyText="243 Hampshire Rd Sunshine VIC 3020"/>
+
+                            <directionsLink
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Directions URL"
+                                    name="./directionsLink"
+                                    emptyText="https://maps.google.com/..."/>
+
+                            <weekdayHours
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Weekday Hours"
+                                    name="./weekdayHours"
+                                    emptyText="Mon-Fri: 8.00am - 5.00pm"/>
+
+                            <weekendHours
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Weekend Hours"
+                                    name="./weekendHours"
+                                    emptyText="Sat-Sun: by appointment"/>
+
+                            <phone
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Phone Number"
+                                    name="./phone"
+                                    emptyText="03 9059 2666"/>
+
+                            <phoneButtonText
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Phone Button Text"
+                                    name="./phoneButtonText"
+                                    value="03 9059 2666"/>
+
+                        </items>
+                    </details>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,512 @@
+/* ==========================================
+   FUNERAL INTRO - BASE
+========================================== */
+
+.funeral-intro,
+.funeral-intro * {
+    box-sizing: border-box;
+}
+
+.funeral-intro {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    color: #333b42;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+}
+
+/* ==========================================
+   MAIN HEADING AND INTRODUCTION
+========================================== */
+
+.funeral-intro__heading {
+    margin: 0 0 16px;
+    color: #103f5d;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+    overflow-wrap: anywhere;
+}
+
+.funeral-intro__description,
+.funeral-intro__description--secondary,
+.funeral-intro__team-description,
+.funeral-intro__facility-description,
+.funeral-intro__venues-description {
+    color: #51565a;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.funeral-intro__description {
+    margin: 0 0 16px;
+}
+
+.funeral-intro__description--secondary {
+    margin: 0 0 20px;
+}
+
+.funeral-intro__description p,
+.funeral-intro__description--secondary p,
+.funeral-intro__team-description p,
+.funeral-intro__facility-description p,
+.funeral-intro__venues-description p {
+    margin: 0 0 12px;
+}
+
+.funeral-intro__description p:last-child,
+.funeral-intro__description--secondary p:last-child,
+.funeral-intro__team-description p:last-child,
+.funeral-intro__facility-description p:last-child,
+.funeral-intro__venues-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================
+   HIGHLIGHTS
+========================================== */
+
+.funeral-intro__highlights {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 0 18px;
+    border-top: 1px solid #e5e7e8;
+    border-bottom: 1px solid #e5e7e8;
+}
+
+.funeral-intro__highlight-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.funeral-intro__highlight-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 9px;
+    min-width: 0;
+    padding: 8px 5px;
+    color: #344b5b;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.funeral-intro__highlight-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    color: #0089bd;
+}
+
+.funeral-intro__highlight-icon svg,
+.funeral-intro__facility-title svg,
+.funeral-intro__churches-heading svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ==========================================
+   MEET KAYLENE
+========================================== */
+
+.funeral-intro__team {
+    min-width: 0;
+    padding: 22px 0;
+    border-bottom: 1px solid #e5e7e8;
+}
+
+.funeral-intro__team-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    min-width: 0;
+    margin: 0 0 14px;
+}
+
+.funeral-intro__team-image-wrapper {
+    flex: 0 0 80px;
+    width: 80px;
+    max-width: 80px;
+}
+
+.funeral-intro__team-image {
+    display: block;
+    width: 80px;
+    height: 96px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 6px;
+}
+
+.funeral-intro__team-details {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.funeral-intro__team-name {
+    margin: 0;
+    color: #103f5d;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.funeral-intro__team-role {
+    margin: 4px 0 0;
+    color: #737b80;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.funeral-intro__team-description {
+    margin: 0 0 14px;
+}
+
+.funeral-intro__team-quote {
+    margin: 14px 0;
+    padding: 14px 16px;
+    color: #51565a;
+    background: #f5f3ef;
+    border-left: 3px solid #0089bd;
+    font-size: 16px;
+    line-height: 1.75;
+    font-style: italic;
+}
+
+.funeral-intro__team-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #24536d;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.funeral-intro__more-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    color: #087fa9;
+    background: #e1f2f7;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.funeral-intro__team-link:hover {
+    color: #0089bd;
+    text-decoration: underline;
+}
+
+.funeral-intro__team-link:focus-visible {
+    outline: 2px solid #087fa9;
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   FACILITIES
+========================================== */
+
+.funeral-intro__facilities {
+    min-width: 0;
+    padding: 0 0 22px;
+    border-bottom: 1px solid #e5e7e8;
+}
+
+.funeral-intro__section-title {
+    margin: 22px 0 14px;
+    color: #103f5d;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.funeral-intro__facility {
+    min-width: 0;
+    margin: 0 0 12px;
+    padding: 16px 18px;
+    background: #f5f2ec;
+    border-radius: 6px;
+}
+
+.funeral-intro__facility:last-child {
+    margin-bottom: 0;
+}
+
+.funeral-intro__facility-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 8px;
+    color: #294b60;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.funeral-intro__facility-title svg {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    color: #0089bd;
+}
+
+.funeral-intro__facility-description {
+    margin: 0;
+    padding-left: 30px;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+/* ==========================================
+   ALTERNATIVE FUNERAL VENUES
+========================================== */
+
+.funeral-intro__venues {
+    min-width: 0;
+    padding-bottom: 20px;
+}
+
+.funeral-intro__venues .funeral-intro__section-title {
+    margin: 22px 0 14px;
+    font-size: 25px;
+}
+
+.funeral-intro__venues-description {
+    margin: 0 0 14px;
+}
+
+.funeral-intro__churches-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0 10px;
+    color: #354d5c;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.funeral-intro__churches-heading svg {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    color: #415b69;
+}
+
+/* Church list */
+
+.funeral-intro__venue-list {
+    margin: 0;
+    padding: 0 0 0 24px;
+    list-style: none;
+}
+
+.funeral-intro__venue-list li {
+    position: relative;
+    min-width: 0;
+    margin: 0 0 10px;
+    padding: 0 0 0 6px;
+    color: #3e4c55;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.funeral-intro__venue-list li::before {
+    position: absolute;
+    top: 0;
+    left: -14px;
+    color: #1684ad;
+    content: "›";
+    font-size: 20px;
+}
+
+/* ==========================================
+   CHURCH LINKS
+   Underline animates left to right on hover
+========================================== */
+
+.funeral-intro__venue-list li a {
+    position: relative;
+    display: inline;
+    color: #087fa9;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: 500;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.funeral-intro__venue-list li a::after {
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    left: 0;
+    height: 1px;
+    background-color: currentColor;
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.4s ease;
+}
+
+.funeral-intro__venue-list li a:hover {
+    color: #103f5d;
+    text-decoration: none !important;
+}
+
+.funeral-intro__venue-list li a:hover::after {
+    transform: scaleX(1);
+}
+
+.funeral-intro__venue-list li a:focus-visible {
+    color: #103f5d;
+    outline: 2px solid #087fa9;
+    outline-offset: 3px;
+}
+
+.funeral-intro__venue-list li a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.funeral-intro__venue-list li a span {
+    display: inline;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 700px) {
+    .funeral-intro__heading {
+        font-size: 28px;
+    }
+
+    .funeral-intro__section-title,
+    .funeral-intro__venues .funeral-intro__section-title {
+        font-size: 23px;
+    }
+
+    .funeral-intro__highlight-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .funeral-intro__highlight-list li {
+        font-size: 14px;
+    }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 420px) {
+    .funeral-intro__heading {
+        font-size: 25px;
+        letter-spacing: -0.2px;
+    }
+
+    .funeral-intro__section-title,
+    .funeral-intro__venues .funeral-intro__section-title {
+        font-size: 21px;
+    }
+
+    .funeral-intro__description,
+    .funeral-intro__description--secondary,
+    .funeral-intro__team-description,
+    .funeral-intro__facility-description,
+    .funeral-intro__venues-description {
+        font-size: 15px;
+    }
+
+    .funeral-intro__highlight-list {
+        gap: 6px;
+    }
+
+    .funeral-intro__highlight-list li {
+        padding-right: 3px;
+        padding-left: 3px;
+        font-size: 13px;
+    }
+
+    .funeral-intro__team-content {
+        gap: 12px;
+    }
+
+    .funeral-intro__team-image-wrapper {
+        flex: 0 0 68px;
+        width: 68px;
+    }
+
+    .funeral-intro__team-image {
+        width: 68px;
+        height: 84px;
+    }
+
+    .funeral-intro__team-name {
+        font-size: 20px;
+    }
+
+    .funeral-intro__team-quote {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .funeral-intro__facility {
+        padding: 14px 12px;
+    }
+
+    .funeral-intro__facility-title {
+        font-size: 16px;
+    }
+
+    .funeral-intro__facility-description {
+        padding-left: 0;
+        font-size: 14px;
+    }
+
+    .funeral-intro__venue-list li {
+        font-size: 15px;
+    }
+}
+
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .funeral-intro__venue-list li a,
+    .funeral-intro__venue-list li a::after {
+        transition: none;
+    }
+}

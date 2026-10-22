@@ -1,0 +1,241 @@
+/* ==========================================
+   FUNERAL DIRECTOR CARD
+========================================== */
+
+.funeral-director-card {
+    display: block;
+    width: 100%;
+    max-width: 345px;
+    margin: 0;
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    color: #253746;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+.funeral-director-card__image-wrapper {
+    display: block;
+    width: 100%;
+    height: 174px;
+    overflow: hidden;
+    background: #f1f1f1;
+}
+
+.funeral-director-card__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+/* ==========================================
+   CARD CONTENT
+========================================== */
+
+.funeral-director-card__content {
+    display: block;
+    padding: 24px 29px 29px;
+    box-sizing: border-box;
+}
+
+.funeral-director-card__name {
+    margin: 0 0 16px;
+    color: #203746;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   ADDRESS
+========================================== */
+
+.funeral-director-card__address {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0 0 10px;
+    color: #6b6b6b;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.funeral-director-card__address span:first-child {
+    flex-shrink: 0;
+}
+
+/* ==========================================
+   DIRECTIONS LINK
+   Underline only on hover
+========================================== */
+
+.funeral-director-card__directions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 14px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.funeral-director-card__directions > span {
+    flex-shrink: 0;
+}
+
+.funeral-director-card__directions a,
+.funeral-director-card__directions a:link,
+.funeral-director-card__directions a:visited,
+.funeral-director-card__directions a:active {
+    color: #253746;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none;
+    transition: color 0.2s ease;
+}
+
+.funeral-director-card__directions a:hover {
+    color: #0788b8;
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+}
+
+.funeral-director-card__directions a:focus-visible {
+    outline: 2px solid #0788b8;
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   OPENING HOURS
+========================================== */
+
+.funeral-director-card__hours {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 14px 0;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    color: #6b6b6b;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.funeral-director-card__clock {
+    flex-shrink: 0;
+}
+
+.funeral-director-card__hours-text {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.funeral-director-card__hours-text p {
+    margin: 0;
+}
+
+/* ==========================================
+   PHONE BUTTON
+========================================== */
+
+.funeral-director-card a.funeral-director-card__phone,
+.funeral-director-card a.funeral-director-card__phone:link,
+.funeral-director-card a.funeral-director-card__phone:visited {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    min-height: 47px;
+    margin-top: 15px;
+    padding: 12px 16px;
+
+    box-sizing: border-box;
+    border: none !important;
+    border-radius: 28px;
+
+    background: #0788b8 !important;
+    color: #ffffff !important;
+
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.funeral-director-card a.funeral-director-card__phone span {
+    color: #ffffff !important;
+}
+
+.funeral-director-card a.funeral-director-card__phone:hover {
+    background: #06739c !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.funeral-director-card a.funeral-director-card__phone:focus-visible {
+    outline: 2px solid #0788b8;
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   PARENT LAYOUT - TWO CARDS
+========================================== */
+
+.funeral-director-card-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 345px));
+    gap: 20px;
+    align-items: start;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 700px) {
+    .funeral-director-card-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .funeral-director-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .funeral-director-card__image-wrapper {
+        height: 174px;
+    }
+
+    .funeral-director-card__content {
+        padding: 24px 20px 25px;
+    }
+}
+
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .funeral-director-card__directions a,
+    .funeral-director-card__phone {
+        transition: none;
+    }
+}

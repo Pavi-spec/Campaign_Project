@@ -1,4 +1,3 @@
-
 package com.drive.core.jobs;
 
 import java.io.IOException;
@@ -15,14 +14,14 @@ import org.osgi.service.component.annotations.Reference;
 @Component(
         service = Servlet.class,
         property = {
-                "sling.servlet.methods=GET",
-                "sling.servlet.paths=/bin/drive/submit-jobs"
+                "sling.servlet.paths=/bin/product-job",
+                "sling.servlet.methods=GET"
         }
 )
-public class JobTriggerServlet extends SlingSafeMethodsServlet {
+public class ProductJobServlet extends SlingSafeMethodsServlet {
 
     @Reference
-    private MyJobService myJobService;
+    private ProductJobService productJobService;
 
     @Override
     protected void doGet(
@@ -30,14 +29,34 @@ public class JobTriggerServlet extends SlingSafeMethodsServlet {
             SlingHttpServletResponse response)
             throws ServletException, IOException {
 
-        int submitted = myJobService.submitJobs();
+        String productPath = request.getParameter("path");
+
+        if (productPath == null || productPath.isBlank()
+                || !productPath.startsWith("/content/")) {
+            response.sendError(
+                    SlingHttpServletResponse.SC_BAD_REQUEST,
+                    "Provide a valid product path under /content/"
+            );
+            return;
+        }
+
+        boolean submitted =
+                productJobService.submitProductJob(productPath);
 
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
 
-        response.getWriter().write(
-                "Successfully submitted " + submitted
-                        + " out of 3 Sling Jobs. Check the AEM log."
-        );
+        if (submitted) {
+            response.getWriter().println(
+                    "Product job submitted: " + productPath
+            );
+        } else {
+            response.setStatus(
+                    SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR
+            );
+            response.getWriter().println(
+                    "Could not submit product job"
+            );
+        }
     }
 }

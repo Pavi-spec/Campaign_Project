@@ -1,0 +1,225 @@
+<sly data-sly-use.model="com.drive.core.models.FlowerCampaignContentModel"></sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"></sly>
+<sly data-sly-call="${clientlib.css @ categories='drive.flower-campaign-content'}"></sly>
+
+<article class="flower-campaign-content">
+
+    <!-- Header -->
+    <header class="flower-campaign-content__header">
+
+        <p class="flower-campaign-content__eyebrow"
+           data-sly-test="${model.eyebrow}">
+            <span class="flower-campaign-content__eyebrow-line"></span>
+            ${model.eyebrow}
+        </p>
+
+        <h1 class="flower-campaign-content__heading"
+            data-sly-test="${model.heading}">
+            ${model.heading}
+        </h1>
+
+        <div class="flower-campaign-content__heading-decoration"
+             aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <p class="flower-campaign-content__description"
+           data-sly-test="${model.description}">
+            ${model.description}
+        </p>
+
+        <p class="flower-campaign-content__description flower-campaign-content__description--secondary"
+           data-sly-test="${model.secondaryDescription}">
+            ${model.secondaryDescription}
+        </p>
+
+    </header>
+
+    <!-- Highlights -->
+    <section class="flower-campaign-content__highlights"
+             data-sly-test="${model.highlight1 || model.highlight2 || model.highlight3 || model.highlight4}">
+
+        <h2 class="flower-campaign-content__section-title"
+            data-sly-test="${model.highlightsHeading}">
+            ${model.highlightsHeading}
+        </h2>
+
+        <ul class="flower-campaign-content__highlight-list">
+
+            <li data-sly-test="${model.highlight1}">
+                <span class="flower-campaign-content__highlight-icon"
+                      aria-hidden="true">✿</span>
+                <span>${model.highlight1}</span>
+            </li>
+
+            <li data-sly-test="${model.highlight2}">
+                <span class="flower-campaign-content__highlight-icon"
+                      aria-hidden="true">✿</span>
+                <span>${model.highlight2}</span>
+            </li>
+
+            <li data-sly-test="${model.highlight3}">
+                <span class="flower-campaign-content__highlight-icon"
+                      aria-hidden="true">✿</span>
+                <span>${model.highlight3}</span>
+            </li>
+
+            <li data-sly-test="${model.highlight4}">
+                <span class="flower-campaign-content__highlight-icon"
+                      aria-hidden="true">✿</span>
+                <span>${model.highlight4}</span>
+            </li>
+
+        </ul>
+    </section>
+
+    <!-- Information section 1 -->
+    <section class="flower-campaign-content__section"
+             data-sly-test="${model.section1Heading || model.section1Description}">
+
+        <h2 class="flower-campaign-content__section-title"
+            data-sly-test="${model.section1Heading}">
+            ${model.section1Heading}
+        </h2>
+
+        <p class="flower-campaign-content__section-description"
+           data-sly-test="${model.section1Description}">
+            ${model.section1Description}
+        </p>
+    </section>
+
+    <!-- Information section 2 -->
+    <section class="flower-campaign-content__section"
+             data-sly-test="${model.section2Heading || model.section2Description}">
+
+        <h2 class="flower-campaign-content__section-title"
+            data-sly-test="${model.section2Heading}">
+            ${model.section2Heading}
+        </h2>
+
+        <p class="flower-campaign-content__section-description"
+           data-sly-test="${model.section2Description}">
+            ${model.section2Description}
+        </p>
+    </section>
+
+    <!-- Information section 3 -->
+    <section class="flower-campaign-content__section"
+             data-sly-test="${model.section3Heading || model.section3Description}">
+
+        <h2 class="flower-campaign-content__section-title"
+            data-sly-test="${model.section3Heading}">
+            ${model.section3Heading}
+        </h2>
+
+        <p class="flower-campaign-content__section-description"
+           data-sly-test="${model.section3Description}">
+            ${model.section3Description}
+        </p>
+    </section>
+
+    <!-- Information section 4 -->
+    <section class="flower-campaign-content__section"
+             data-sly-test="${model.section4Heading || model.section4Description}">
+
+        <h2 class="flower-campaign-content__section-title"
+            data-sly-test="${model.section4Heading}">
+            ${model.section4Heading}
+        </h2>
+
+        <p class="flower-campaign-content__section-description"
+           data-sly-test="${model.section4Description}">
+            ${model.section4Description}
+        </p>
+    </section>
+
+    <!-- Five useful links -->
+    <nav class="flower-campaign-content__links-section"
+         aria-label="Flower campaign resources"
+         data-sly-test="${model.link1Text || model.link2Text || model.link3Text || model.link4Text || model.link5Text}">
+
+        <h2 class="flower-campaign-content__section-title"
+            data-sly-test="${model.linksHeading}">
+            ${model.linksHeading}
+        </h2>
+
+        <ul class="flower-campaign-content__links">
+
+            <li data-sly-test="${model.link1Text}">
+                <a href="${model.link1Path @ context='uri'}"
+                   data-sly-attribute.aria-label="${model.link1Text}">
+                    <span>${model.link1Text}</span>
+                    <span class="flower-campaign-content__link-arrow"
+                          aria-hidden="true">↗</span>
+                </a>
+            </li>
+
+            <li data-sly-test="${model.link2Text}">
+                <a href="${model.link2Path @ context='uri'}"
+                   data-sly-attribute.aria-label="${model.link2Text}">
+                    <span>${model.link2Text}</span>
+                    <span class="flower-campaign-content__link-arrow"
+                          aria-hidden="true">↗</span>
+                </a>
+            </li>
+
+            <li data-sly-test="${model.link3Text}">
+                <a href="${model.link3Path @ context='uri'}"
+                   data-sly-attribute.aria-label="${model.link3Text}">
+                    <span>${model.link3Text}</span>
+                    <span class="flower-campaign-content__link-arrow"
+                          aria-hidden="true">↗</span>
+                </a>
+            </li>
+
+            <li data-sly-test="${model.link4Text}">
+                <a href="${model.link4Path @ context='uri'}"
+                   data-sly-attribute.aria-label="${model.link4Text}">
+                    <span>${model.link4Text}</span>
+                    <span class="flower-campaign-content__link-arrow"
+                          aria-hidden="true">↗</span>
+                </a>
+            </li>
+
+            <li data-sly-test="${model.link5Text}">
+                <a href="${model.link5Path @ context='uri'}"
+                   data-sly-attribute.aria-label="${model.link5Text}">
+                    <span>${model.link5Text}</span>
+                    <span class="flower-campaign-content__link-arrow"
+                          aria-hidden="true">↗</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Offer / call to action -->
+    <aside class="flower-campaign-content__offer"
+           data-sly-test="${model.offerHeading || model.offerDescription || model.buttonText}">
+
+        <div class="flower-campaign-content__offer-flower"
+             aria-hidden="true">✿</div>
+
+        <div class="flower-campaign-content__offer-content">
+
+            <h2 data-sly-test="${model.offerHeading}">
+                ${model.offerHeading}
+            </h2>
+
+            <p data-sly-test="${model.offerDescription}">
+                ${model.offerDescription}
+            </p>
+
+            <a class="flower-campaign-content__button"
+               href="${model.buttonPath @ context='uri'}"
+               data-sly-test="${model.buttonText}">
+                <span>${model.buttonText}</span>
+                <span aria-hidden="true">→</span>
+            </a>
+
+        </div>
+    </aside>
+
+</article>

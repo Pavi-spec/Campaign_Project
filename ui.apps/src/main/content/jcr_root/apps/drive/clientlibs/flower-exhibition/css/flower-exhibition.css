@@ -1,0 +1,563 @@
+
+/* =====================================================
+   FLOWER EXHIBITION
+   DESKTOP: 3 CARDS PER ROW
+   TABLET: 3 CARDS PER ROW
+   MOBILE: 1 CARD PER ROW
+   AEM PLACEHOLDER: LEFT ALIGNED
+===================================================== */
+
+.flower-exhibition,
+.flower-exhibition * {
+    box-sizing: border-box;
+}
+
+.flower-exhibition {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 48px 24px;
+    background: #fffaf3;
+    text-align: left !important;
+}
+
+/* =====================================================
+   SECTION HEADER
+===================================================== */
+
+.flower-exhibition__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 36px;
+}
+
+.flower-exhibition__heading-wrapper {
+    min-width: 0;
+}
+
+.flower-exhibition__eyebrow {
+    margin: 0 0 10px;
+    color: #756b60;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.flower-exhibition__heading {
+    margin: 0;
+    color: #29251f;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(29px, 3vw, 41px);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.flower-exhibition__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    color: #29251f;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.flower-exhibition__view-all:hover,
+.flower-exhibition__view-all:focus-visible {
+    color: #1685d1;
+    text-decoration: none;
+}
+
+/* =====================================================
+   OUTER RESPONSIVE GRID WRAPPER
+===================================================== */
+
+.flower-exhibition .flower-exhibition__grid {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+}
+
+/* =====================================================
+   AEM AUTHORING PLACEHOLDER
+   LEFT ALIGN "DRAG COMPONENTS HERE"
+===================================================== */
+
+.flower-exhibition .flower-exhibition__grid .cq-placeholder,
+.flower-exhibition .flower-exhibition__grid > .new,
+.flower-exhibition .flower-exhibition__grid > .cq-placeholder {
+    text-align: left !important;
+}
+
+/* Keep AEM grid content left aligned */
+.flower-exhibition .flower-exhibition__grid > .aem-Grid {
+    text-align: left !important;
+}
+
+/* =====================================================
+   IMPORTANT FIX: REMOVE AEM CLEARFIX PSEUDO-ELEMENTS
+
+   These pseudo-elements were occupying the first grid
+   cell and pushing card 1 into column 2.
+===================================================== */
+
+.flower-exhibition .flower-exhibition__grid > .aem-Grid::before,
+.flower-exhibition .flower-exhibition__grid > .aem-Grid::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* =====================================================
+   AEM INNER GRID
+   DESKTOP AND TABLET: 3 EQUAL COLUMNS
+===================================================== */
+
+.flower-exhibition .flower-exhibition__grid > .aem-Grid {
+    display: grid !important;
+    position: relative !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-flow: row !important;
+    grid-auto-rows: auto !important;
+    column-gap: 25px !important;
+    row-gap: 42px !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+}
+
+/* =====================================================
+   AEM GRID COLUMN OVERRIDES
+   REMOVE ORIGINAL 12-COLUMN FLOAT SIZING
+===================================================== */
+
+.flower-exhibition .flower-exhibition__grid > .aem-Grid > .aem-GridColumn,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--12,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--11,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--10,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--9,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--8,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--7,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--6,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--5,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--4,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--3,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--2,
+.flower-exhibition .flower-exhibition__grid .aem-GridColumn--default--1 {
+    display: block !important;
+    position: relative !important;
+    float: none !important;
+    clear: none !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    justify-self: stretch !important;
+    align-self: stretch !important;
+}
+
+/* =====================================================
+   INDIVIDUAL CARD
+===================================================== */
+
+.flower-exhibition .flower-exhibition-item {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.flower-exhibition .flower-exhibition__grid > .aem-Grid > .aem-GridColumn > .flower-exhibition-item {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* =====================================================
+   IMAGE WRAPPER
+===================================================== */
+
+.flower-exhibition-item__image-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+    border-radius: 13px;
+    background: #f4eee5;
+    isolation: isolate;
+}
+
+/* =====================================================
+   IMAGE ZOOM
+===================================================== */
+
+.flower-exhibition-item__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transform: scale(1.06);
+    transition: transform 650ms cubic-bezier(0.2, 0.7, 0.3, 1);
+    will-change: transform;
+}
+
+.flower-exhibition-item__image-wrapper:hover .flower-exhibition-item__image {
+    transform: scale(1.18);
+}
+
+.flower-exhibition-item:has(.flower-exhibition-item__image-button:hover) .flower-exhibition-item__image,
+.flower-exhibition-item:has(.flower-exhibition-item__description-text:hover) .flower-exhibition-item__image {
+    transform: scale(1.18);
+}
+
+/* =====================================================
+   IMAGE OVERLAY
+===================================================== */
+
+.flower-exhibition-item__image-overlay {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(20, 18, 15, 0.34) 0%,
+        rgba(20, 18, 15, 0.10) 30%,
+        transparent 58%
+    );
+    pointer-events: none;
+}
+
+/* =====================================================
+   IMAGE BUTTON
+===================================================== */
+
+.flower-exhibition-item__image-button {
+    position: absolute;
+    z-index: 2;
+    left: 14px;
+    bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: calc(100% - 28px);
+    padding: 7px 10px;
+    border: none;
+    border-radius: 4px;
+    background: #fffaf3;
+    color: #29251f;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+a.flower-exhibition-item__image-button {
+    cursor: pointer;
+}
+
+a.flower-exhibition-item__image-button:link,
+a.flower-exhibition-item__image-button:visited,
+a.flower-exhibition-item__image-button:hover,
+a.flower-exhibition-item__image-button:active {
+    text-decoration: none;
+}
+
+a.flower-exhibition-item__image-button:hover,
+a.flower-exhibition-item__image-button:focus-visible {
+    color: #fffaf3;
+    background: #29251f;
+    text-decoration: none;
+}
+
+.flower-exhibition-item__image-button:focus-visible {
+    outline: 2px solid #0788b8;
+    outline-offset: 3px;
+}
+
+.flower-exhibition-item__button-text {
+    display: inline-block;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+}
+
+.flower-exhibition-item__button-arrow {
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: 13px;
+    line-height: 1;
+    transition: transform 250ms ease;
+}
+
+a.flower-exhibition-item__image-button:hover .flower-exhibition-item__button-arrow {
+    transform: translate(2px, -2px);
+}
+
+.flower-exhibition-item__loading[hidden] {
+    display: none;
+}
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.flower-exhibition-item__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+    width: 100%;
+    min-width: 0;
+    padding: 19px 0 5px;
+}
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.flower-exhibition-item__category {
+    margin: 0 0 8px;
+    color: #756b60;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* =====================================================
+   DATE AND READING TIME
+===================================================== */
+
+.flower-exhibition-item__metadata,
+.flower-exhibition-item__meta-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    width: 100%;
+    margin: 0 0 10px;
+}
+
+.flower-exhibition-item__date,
+.flower-exhibition-item__reading-time,
+.flower-exhibition-item__meta-text {
+    display: inline-block;
+    color: #756b60;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.flower-exhibition-item__metadata-separator,
+.flower-exhibition-item__meta-separator {
+    color: #1685d1;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.flower-exhibition-item__title {
+    margin: 0 0 11px;
+    color: #29251f;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 600;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.flower-exhibition-item__title-link,
+.flower-exhibition-item__title-link:link,
+.flower-exhibition-item__title-link:visited,
+.flower-exhibition-item__title-link:hover,
+.flower-exhibition-item__title-link:focus-visible {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.flower-exhibition-item__description {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 7px;
+    color: #29251f;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.8;
+    letter-spacing: 0.1px;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.flower-exhibition-item__description-link,
+.flower-exhibition-item__description-link:link,
+.flower-exhibition-item__description-link:visited,
+.flower-exhibition-item__description-link:hover,
+.flower-exhibition-item__description-link:active {
+    color: #29251f;
+    text-decoration: none;
+}
+
+.flower-exhibition-item__description-text {
+    color: #29251f;
+    font-weight: 500;
+    text-decoration: none;
+    background-image: linear-gradient(to right, #29251f, #29251f);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 0% 1px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-size 850ms ease;
+}
+
+.flower-exhibition-item:has(.flower-exhibition-item__image-wrapper:hover) .flower-exhibition-item__description-text,
+.flower-exhibition-item:has(.flower-exhibition-item__image-button:hover) .flower-exhibition-item__description-text,
+.flower-exhibition-item:has(.flower-exhibition-item__description-text:hover) .flower-exhibition-item__description-text,
+.flower-exhibition-item:has(.flower-exhibition-item__description-link:focus-visible) .flower-exhibition-item__description-text {
+    background-size: 100% 1px;
+}
+
+/* =====================================================
+   TABLET: 3 CARDS PER ROW
+===================================================== */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .flower-exhibition {
+        padding: 40px 20px;
+    }
+
+    .flower-exhibition__header {
+        align-items: flex-start;
+    }
+
+    .flower-exhibition .flower-exhibition__grid > .aem-Grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        column-gap: 22px !important;
+        row-gap: 36px !important;
+    }
+
+    .flower-exhibition-item__title {
+        font-size: 25px;
+    }
+
+    .flower-exhibition-item__description {
+        font-size: 15px;
+    }
+}
+
+/* =====================================================
+   MOBILE: 1 CARD PER ROW
+===================================================== */
+
+@media (max-width: 600px) {
+    .flower-exhibition {
+        padding: 30px 16px;
+    }
+
+    .flower-exhibition__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 25px;
+    }
+
+    .flower-exhibition__heading {
+        font-size: 29px;
+    }
+
+    .flower-exhibition .flower-exhibition__grid > .aem-Grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 32px !important;
+    }
+
+    .flower-exhibition-item__image-wrapper {
+        aspect-ratio: 5 / 4;
+        border-radius: 10px;
+    }
+
+    .flower-exhibition-item__image-button {
+        left: 12px;
+        bottom: 12px;
+        padding: 7px 9px;
+        font-size: 12px;
+    }
+
+    .flower-exhibition-item__content {
+        padding-top: 15px;
+    }
+
+    .flower-exhibition-item__title {
+        margin-bottom: 9px;
+        font-size: 24px;
+    }
+
+    .flower-exhibition-item__description {
+        font-size: 14.5px;
+        line-height: 1.75;
+    }
+}
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .flower-exhibition-item__image,
+    .flower-exhibition-item__image-button,
+    .flower-exhibition-item__button-arrow,
+    .flower-exhibition-item__description-text {
+        transition: none;
+    }
+}

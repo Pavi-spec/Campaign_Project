@@ -1,0 +1,22 @@
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='drive.flower-details'}">
+</sly>
+
+<section class="flower-details"
+         data-author-mode="${wcmmode.edit}"
+         data-interval="10000">
+
+    <div class="flower-details__card">
+
+        <div class="flower-details__deck"
+             data-sly-resource="${'items' @ resourceType='wcm/foundation/components/responsivegrid'}">
+        </div>
+
+        <nav class="flower-details__navigation"
+             aria-label="Choose a flower"
+             data-flower-navigation>
+        </nav>
+
+    </div>
+</section>

@@ -1,0 +1,168 @@
+
+/* =========================================
+   FUNERAL PAGE LAYOUT
+   Intro on left, director card on right
+   ========================================= */
+
+/* Apply consistent box sizing */
+.funeral-page-layout,
+.funeral-page-layout * {
+    box-sizing: border-box;
+}
+
+/* AEM responsive-grid component wrapper */
+.aem-Grid > .funeral-page-layout.aem-GridColumn {
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+    clear: both !important;
+    box-sizing: border-box;
+}
+
+/* Main two-column layout */
+.funeral-page-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 300px !important;
+    column-gap: 24px !important;
+    row-gap: 24px;
+    align-items: start;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* =========================================
+   LEFT SIDE - FUNERAL INTRO
+   ========================================= */
+
+.funeral-page-layout__main {
+    grid-column: 1;
+    grid-row: 1;
+
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Allow the intro component to use available space */
+.funeral-page-layout__main .funeral-intro {
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+}
+
+/* =========================================
+   RIGHT SIDE - DIRECTOR CARD
+   ========================================= */
+
+.funeral-page-layout__sidebar {
+    grid-column: 2;
+    grid-row: 1;
+
+    display: block;
+    width: 300px !important;
+    min-width: 0 !important;
+    max-width: 300px !important;
+
+    justify-self: end;
+    align-self: start;
+
+    position: sticky;
+    top: 24px;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Director card fills the sidebar */
+.funeral-page-layout__sidebar .funeral-director-card {
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 300px !important;
+
+    margin: 0 !important;
+}
+
+/* =========================================
+   MEDIUM SCREENS
+   ========================================= */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+
+    .funeral-page-layout {
+        grid-template-columns: minmax(0, 1fr) 280px !important;
+        column-gap: 20px !important;
+    }
+
+    .funeral-page-layout__sidebar {
+        width: 280px !important;
+        max-width: 280px !important;
+    }
+
+    .funeral-page-layout__sidebar .funeral-director-card {
+        width: 100% !important;
+        max-width: 280px !important;
+    }
+}
+
+/* =========================================
+   MOBILE AND NARROW SCREENS
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .aem-Grid > .funeral-page-layout.aem-GridColumn {
+        width: 100% !important;
+        max-width: 100% !important;
+        float: none !important;
+        clear: both !important;
+    }
+
+    .funeral-page-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        column-gap: 0 !important;
+        row-gap: 24px !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .funeral-page-layout__main {
+        grid-column: 1;
+        grid-row: 1;
+
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .funeral-page-layout__sidebar {
+        grid-column: 1;
+        grid-row: 2;
+
+        position: static;
+
+        justify-self: start;
+        align-self: start;
+
+        width: 100% !important;
+        max-width: 360px !important;
+    }
+
+    .funeral-page-layout__sidebar .funeral-director-card {
+        width: 100% !important;
+        max-width: 360px !important;
+    }
+}

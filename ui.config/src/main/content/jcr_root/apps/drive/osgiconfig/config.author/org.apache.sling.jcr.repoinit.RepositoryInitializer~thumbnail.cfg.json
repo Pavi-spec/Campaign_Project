@@ -1,0 +1,5 @@
+{
+  "scripts": [
+    "create service user drive-thumbnail-writer\nset ACL for drive-thumbnail-writer\nallow jcr:read on /content/dam\nallow jcr:modifyProperties,jcr:addChildNodes,jcr:removeChildNodes,jcr:removeNode,jcr:nodeTypeManagement on /content/dam\nend"
+  ]
+}

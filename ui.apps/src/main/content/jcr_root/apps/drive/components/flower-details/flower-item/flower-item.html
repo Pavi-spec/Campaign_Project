@@ -1,0 +1,40 @@
+
+<sly data-sly-use.model="com.drive.core.models.FlowerItemModel"></sly>
+
+<article class="flower-details__slide"
+         data-initials="${model.initials}">
+
+    <div class="flower-details__copy">
+
+        <div class="flower-details__icon"
+             data-sly-test="${model.initials}">
+            ${model.initials}
+        </div>
+
+        <h2 class="flower-details__name"
+            data-sly-test="${model.flowerName}">
+            ${model.flowerName}
+        </h2>
+
+        <div class="flower-details__description"
+             data-sly-test="${model.flowerDescription}">
+            ${model.flowerDescription}
+        </div>
+
+        <div class="flower-details__meaning"
+             data-sly-test="${model.flowerMeaning}">
+            Meaning: ${model.flowerMeaning}
+        </div>
+
+    </div>
+
+    <div class="flower-details__image-wrap"
+         data-sly-test="${model.flowerImage}">
+
+        <img src="${model.flowerImage}"
+             alt="${model.flowerName}"
+             loading="lazy" />
+
+    </div>
+
+</article>

@@ -1,0 +1,67 @@
+<sly data-sly-use.model="com.drive.core.models.FuneralDirectorCardModel"/>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='drive.funeral_card_intro'}"/>
+<div
+        data-sly-test="${wcmmode.edit && !model.name}"
+        class="cq-placeholder"
+        data-emptytext="Funeral Director Card">
+</div>
+
+<article class="funeral-director-card">
+
+    <div class="funeral-director-card__image-wrapper"
+         data-sly-test="${model.image}">
+        <img
+                class="funeral-director-card__image"
+                src="${model.image @ context='uri'}"
+                alt="${model.name}"/>
+    </div>
+
+
+    <div class="funeral-director-card__content">
+
+        <h2 class="funeral-director-card__name">
+            ${model.name}
+        </h2>
+
+
+        <p class="funeral-director-card__address"
+           data-sly-test="${model.address}">
+            <span aria-hidden="true">⌖</span>
+            <span>${model.address}</span>
+        </p>
+
+
+        <div class="funeral-director-card__directions"
+             data-sly-test="${model.directionsLink}">
+            <span aria-hidden="true">◇</span>
+            <a href="${model.directionsLink @ context='uri'}">
+                Get directions ↗
+            </a>
+        </div>
+
+
+        <div class="funeral-director-card__hours"
+             data-sly-test="${model.weekdayHours || model.weekendHours}">
+            <span class="funeral-director-card__clock"
+                  aria-hidden="true">◷</span>
+            <div class="funeral-director-card__hours-text">
+                <p data-sly-test="${model.weekdayHours}">
+                    ${model.weekdayHours}
+                </p>
+                <p data-sly-test="${model.weekendHours}">
+                    ${model.weekendHours}
+                </p>
+            </div>
+        </div>
+
+
+        <a data-sly-test="${model.phone}"
+           class="funeral-director-card__phone"
+           href="tel:${model.phone}">
+            <span aria-hidden="true">☎</span>
+            <span>${model.phoneButtonText || model.phone}</span>
+        </a>
+
+    </div>
+</article>

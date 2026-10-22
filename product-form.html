@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AEM Product Form</title>
+</head>
+<body>
+<h1>Add Product</h1>
+
+<form id="productForm">
+    <label>
+        Product name:
+        <input name="name" value="Running Shoes" required>
+    </label>
+    <br><br>
+
+    <label>
+        Price:
+        <input name="price" type="number" min="0"
+               step="0.01" value="2499" required>
+    </label>
+    <br><br>
+
+    <label>
+        Description:
+        <textarea name="description" required>Lightweight running shoes</textarea>
+    </label>
+    <br><br>
+
+    <label>
+        AEM image path:
+        <input name="imagePath"
+               value="/content/dam/products/shoe.jpg" required>
+    </label>
+    <br><br>
+
+    <button type="submit">Save and Submit Jobs</button>
+</form>
+
+<pre id="result"></pre>
+
+<script>
+    document.getElementById("productForm")
+        .addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const result = document.getElementById("result");
+            result.textContent = "Submitting...";
+
+            try {
+                const response = await fetch(
+                    "http://localhost:4502/bin/drive/product-jobs",
+                    {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type":
+                                "application/x-www-form-urlencoded"
+                        },
+                        body: new URLSearchParams(
+                            new FormData(this)
+                        )
+                    }
+                );
+
+                result.textContent = await response.text();
+            } catch (error) {
+                result.textContent =
+                    "Request failed. Check AEM login, CSRF protection, and connection.";
+            }
+        });
+</script>
+</body>
+</html>

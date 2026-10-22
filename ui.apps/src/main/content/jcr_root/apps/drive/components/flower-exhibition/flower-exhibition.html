@@ -1,0 +1,39 @@
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='drive.flower-exhibition'}">
+</sly>
+
+<sly data-sly-use.model="com.drive.core.models.FlowerExhibitionModel"/>
+
+<section class="flower-exhibition" data-flower-exhibition>
+
+    <div class="flower-exhibition__header">
+
+        <div class="flower-exhibition__heading-wrapper">
+
+
+
+            <h2 class="flower-exhibition__heading"
+                data-sly-test="${model.heading}">
+                ${model.heading}
+            </h2>
+
+        </div>
+
+        <a class="flower-exhibition__view-all"
+           data-sly-test="${model.viewAllLinkAvailable}"
+           href="${model.viewAllLink @ extension='html'}">
+
+            <span>${model.viewAllText}</span>
+            <span aria-hidden="true">→</span>
+
+        </a>
+
+    </div>
+
+
+    <div class="flower-exhibition__grid"
+         data-sly-resource="${'items' @ resourceType='wcm/foundation/components/responsivegrid'}">
+    </div>
+
+</section>

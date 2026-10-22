@@ -1,0 +1,76 @@
+
+<sly data-sly-use.model="com.drive.core.models.FlowerExhibitionItemModel"></sly>
+
+<article class="flower-exhibition-item">
+
+
+    <div class="flower-exhibition-item__image-wrapper"
+         data-sly-test="${model.imageAvailable}">
+
+        <img class="flower-exhibition-item__image"
+             src="${model.image @ context='uri'}"
+             alt="${model.imageAlt}"
+             loading="lazy" />
+
+
+        <a class="flower-exhibition-item__image-button"
+           data-sly-test="${model.buttonDestinationAvailable && model.linkText}"
+           href="${model.articleLink @ context='uri'}">
+            ${model.linkText}
+        </a>
+
+    </div>
+
+    <div class="flower-exhibition-item__content">
+
+
+        <p class="flower-exhibition-item__category"
+           data-sly-test="${model.category}">
+            ${model.category}
+        </p>
+
+
+        <div class="flower-exhibition-item__metadata"
+             data-sly-test="${model.flowerDate || model.readingTime}">
+
+            <span class="flower-exhibition-item__date"
+                  data-sly-test="${model.flowerDate}">
+                ${model.flowerDate}
+            </span>
+
+            <span class="flower-exhibition-item__metadata-separator"
+                  data-sly-test="${model.flowerDate && model.readingTime}"
+                  aria-hidden="true">·</span>
+
+            <span class="flower-exhibition-item__reading-time"
+                  data-sly-test="${model.readingTime}">
+                ${model.readingTime}
+            </span>
+
+        </div>
+
+
+        <h3 class="flower-exhibition-item__title"
+            data-sly-test="${model.title}">
+            ${model.title}
+        </h3>
+
+
+        <p class="flower-exhibition-item__description"
+           data-sly-test="${model.description}">
+
+            <a class="flower-exhibition-item__description-link"
+               data-sly-test="${model.descriptionDestinationAvailable}"
+               href="${model.descriptionLink @ context='uri'}">
+                <span class="flower-exhibition-item__description-text">${model.description}</span>
+            </a>
+
+            <span data-sly-test="${!model.descriptionDestinationAvailable}">
+                <span class="flower-exhibition-item__description-text">${model.description}</span>
+            </span>
+
+        </p>
+
+    </div>
+
+</article>

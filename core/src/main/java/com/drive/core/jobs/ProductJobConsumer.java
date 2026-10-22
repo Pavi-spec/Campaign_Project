@@ -1,4 +1,3 @@
-
 package com.drive.core.jobs;
 
 import org.apache.sling.event.jobs.Job;
@@ -10,30 +9,30 @@ import org.slf4j.LoggerFactory;
 @Component(
         service = JobConsumer.class,
         property = {
-                JobConsumer.PROPERTY_TOPICS + "=drive/image/process"
+                JobConsumer.PROPERTY_TOPICS
+                        + "=drive/products/sync"
         }
 )
-public class ImageJobConsumer implements JobConsumer {
+public class ProductJobConsumer implements JobConsumer {
 
     private static final Logger LOG =
-            LoggerFactory.getLogger(ImageJobConsumer.class);
+            LoggerFactory.getLogger(ProductJobConsumer.class);
 
     @Override
     public JobResult process(Job job) {
 
-        String imagePath =
-                job.getProperty("imagePath", String.class);
+        String productPath =
+                job.getProperty("productPath", String.class);
 
-        if (imagePath == null || imagePath.isEmpty()) {
-            LOG.error("Job has no imagePath property");
+        if (productPath == null || productPath.isBlank()) {
+            LOG.warn("Product job has no productPath");
             return JobResult.CANCEL;
         }
 
-        LOG.info("Processing image: {}", imagePath);
+        LOG.info("Processing product job for: {}", productPath);
 
-        // Demonstration only: no actual image is modified.
 
-        LOG.info("Finished processing image: {}", imagePath);
+        LOG.info("Product job completed for: {}", productPath);
 
         return JobResult.OK;
     }

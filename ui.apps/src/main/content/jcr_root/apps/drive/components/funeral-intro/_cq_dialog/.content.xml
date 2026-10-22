@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Funeral Introduction"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <!-- INTRODUCTION TAB -->
+                    <intro
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Introduction"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <heading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Main Heading"
+                                    name="./heading"
+                                    value="Personal funeral services from our local funeral directors"/>
+
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Introduction"
+                                    name="./description"
+                                    rows="3"/>
+
+                            <secondDescription
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Additional Description"
+                                    name="./secondDescription"
+                                    rows="4"/>
+
+                            <highlight1
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Highlight 1"
+                                    name="./highlight1"
+                                    value="Almost 50 years of service"/>
+
+                            <highlight2
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Highlight 2"
+                                    name="./highlight2"
+                                    value="Experienced, local funeral directors"/>
+
+                            <highlight3
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Highlight 3"
+                                    name="./highlight3"
+                                    value="Personalised, unique farewells"/>
+
+                            <highlight4
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Highlight 4"
+                                    name="./highlight4"
+                                    value="Simple process with transparent pricing"/>
+
+                        </items>
+                    </intro>
+
+                    <!-- TEAM MEMBER TAB -->
+                    <team
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Team Member"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <teamName
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Name"
+                                    name="./teamName"
+                                    value="Kaylene"/>
+
+                            <teamRole
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Role"
+                                    name="./teamRole"
+                                    value="Location Manager at our Sunshine funeral home"/>
+
+                            <teamImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Portrait Image"
+                                    name="./teamImage"
+                                    rootPath="/content/dam"
+                                    filter="hierarchy"
+                                    forceSelection="{Boolean}true"/>
+
+                            <teamAlt
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Image Alt Text"
+                                    name="./teamAlt"
+                                    value="Kaylene, Location Manager"/>
+
+                            <teamDescription
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Biography"
+                                    name="./teamDescription"
+                                    rows="4"/>
+
+                            <teamQuote
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Quotation"
+                                    name="./teamQuote"
+                                    rows="3"/>
+
+                            <teamLinkText
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Link Text"
+                                    name="./teamLinkText"
+                                    value="View More"/>
+
+                            <teamLink
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Profile Page Path"
+                                    name="./teamLink"
+                                    rootPath="/content"/>
+
+                        </items>
+                    </team>
+
+                    <!-- FACILITIES TAB -->
+                    <facilities
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Facilities"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <facilitiesHeading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Section Heading"
+                                    name="./facilitiesHeading"
+                                    value="Facilities &amp; amenities at Simplicity Funerals Sunshine"/>
+
+                            <parkingHeading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Parking Heading"
+                                    name="./parkingHeading"
+                                    value="Parking"/>
+
+                            <parkingDescription
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Parking Description"
+                                    name="./parkingDescription"
+                                    rows="4"/>
+
+                            <roomHeading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Arrangement Room Heading"
+                                    name="./roomHeading"
+                                    value="Arrangement Room"/>
+
+                            <roomDescription
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Arrangement Room Description"
+                                    name="./roomDescription"
+                                    rows="3"/>
+
+                        </items>
+                    </facilities>
+
+                    <!-- ALTERNATIVE VENUES TAB -->
+                    <venues
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Alternative Venues"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <venuesHeading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Section Heading"
+                                    name="./venuesHeading"
+                                    value="Alternative funeral venues in Sunshine and surrounding areas"/>
+
+                            <venuesDescription
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Description"
+                                    name="./venuesDescription"
+                                    rows="3"/>
+
+                            <!-- CHURCH 1 -->
+                            <church1
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 1 Name"
+                                    name="./church1"
+                                    value="Sunshine Uniting Church"/>
+
+                            <church1Link
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 1 External URL"
+                                    name="./church1Link"
+                                    emptyText="https://example.com"/>
+
+                            <!-- CHURCH 2 -->
+                            <church2
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 2 Name"
+                                    name="./church2"
+                                    value="Hope of Life Community Church"/>
+
+                            <church2Link
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 2 External URL"
+                                    name="./church2Link"
+                                    emptyText="https://example.com"/>
+
+                            <!-- CHURCH 3 -->
+                            <church3
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 3 Name"
+                                    name="./church3"
+                                    value="Sunshine Presbyterian Church"/>
+
+                            <church3Link
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 3 External URL"
+                                    name="./church3Link"
+                                    emptyText="https://example.com"/>
+
+                            <!-- CHURCH 4 -->
+                            <church4
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 4 Name"
+                                    name="./church4"
+                                    value="Our Lady of the Immaculate Conception"/>
+
+                            <church4Link
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 4 External URL"
+                                    name="./church4Link"
+                                    emptyText="https://example.com"/>
+
+                            <!-- CHURCH 5 -->
+                            <church5
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 5 Name"
+                                    name="./church5"
+                                    value="St Bernadette's Parish"/>
+
+                            <church5Link
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 5 External URL"
+                                    name="./church5Link"
+                                    emptyText="https://example.com"/>
+
+                            <!-- CHURCH 6 -->
+                            <church6
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 6 Name"
+                                    name="./church6"
+                                    value="St Peter's Catholic Church"/>
+
+                            <church6Link
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Church 6 External URL"
+                                    name="./church6Link"
+                                    emptyText="https://example.com"/>
+
+                        </items>
+                    </venues>
+
+                </items>
+            </tabs>
+
+        </items>
+    </content>
+</jcr:root>

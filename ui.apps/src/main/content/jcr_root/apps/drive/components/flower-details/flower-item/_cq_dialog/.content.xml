@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Flower Item"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <flower
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Flower Information"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <flowerName
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Flower Name"
+                                    name="./flowerName"
+                                    required="{Boolean}true"/>
+
+                            <flowerImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Flower Image"
+                                    name="./flowerImage"
+                                    rootPath="/content/dam"/>
+
+                            <flowerDescription
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Flower Description"
+                                    name="./flowerDescription"
+                                    rows="{Long}4"/>
+
+                            <flowerMeaning
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Flower Meaning"
+                                    name="./flowerMeaning"/>
+
+                            <initials
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Navigation Initials"
+                                    name="./initials"
+                                    maxlength="{Long}3"/>
+
+                        </items>
+                    </flower>
+
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
