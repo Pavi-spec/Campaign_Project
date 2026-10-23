@@ -68,12 +68,6 @@
 
             </fields>
 
-            <buttonText
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                    fieldLabel="Login Button Text"
-                    name="./buttonText"
-                    value="Login"/>
 
         </items>
 

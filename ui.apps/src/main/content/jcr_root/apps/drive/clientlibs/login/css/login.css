@@ -1,9 +1,15 @@
+
+/* ==============================
+   Parent Login Component
+   ============================== */
+
 .login-component {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 500px;
     padding: 40px 20px;
+    box-sizing: border-box;
     background: linear-gradient(
         135deg,
         #eef2ff,
@@ -11,15 +17,19 @@
     );
 }
 
+/* Login Card */
+
 .login-card {
     width: 100%;
     max-width: 420px;
     padding: 35px;
+    box-sizing: border-box;
     border-radius: 18px;
-    background: white;
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
+
+/* Login Header */
 
 .login-header {
     text-align: center;
@@ -38,11 +48,29 @@
 
 .login-header p {
     margin-top: 8px;
-    color: #777;
+    color: #777777;
+    line-height: 1.5;
 }
 
+/* Login Form */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Email and Password Fields */
+
 .login-field {
-    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .login-field label {
@@ -52,35 +80,56 @@
 }
 
 .login-input {
+    display: block;
     width: 100%;
+    min-height: 48px;
     padding: 13px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 8px;
+    background: #ffffff;
+    color: #222222;
     font-size: 15px;
     outline: none;
-    transition: border 0.2s;
+    transition: border-color 0.2s ease;
 }
 
 .login-input:focus {
     border-color: #6366f1;
 }
 
-.login-button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    background: #6366f1;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+/* Field Validation Messages */
+
+.field-error {
+    margin-top: 6px;
+    color: #dc2626;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 18px;
 }
 
-.login-button:hover {
-    background: #4f46e5;
+/* Separate Login Button Component Wrapper */
+
+.login-button-component {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    clear: both;
 }
+
+/* Prevent the included button from affecting field layout */
+
+.login-button-component > .login-button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Status Messages */
 
 .login-message {
     margin-top: 20px;
@@ -107,10 +156,20 @@
     background: #fef3c7;
     border: 1px solid #fcd34d;
 }
-.field-error {
-    margin-top: 6px;
-    color: #dc2626;
-    font-size: 14px;
-    font-weight: 500;
-    min-height: 18px;
+
+/* Responsive Layout */
+
+@media (max-width: 480px) {
+    .login-component {
+        min-height: 0;
+        padding: 30px 16px;
+    }
+
+    .login-card {
+        padding: 24px 20px;
+    }
+
+    .login-header h2 {
+        font-size: 26px;
+    }
 }

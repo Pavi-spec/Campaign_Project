@@ -19,16 +19,8 @@ public class LoginModel {
     @ChildResource(name = "fields")
     private List<LoginField> fields;
 
-    @ValueMapValue
-    private String buttonText;
-
     public List<LoginField> getFields() {
         return fields;
     }
 
-    public String getButtonText() {
-        return buttonText != null
-                ? buttonText
-                : "Login";
-    }
 }

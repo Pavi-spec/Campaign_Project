@@ -3,7 +3,6 @@
 
 <article class="flower-exhibition-item">
 
-
     <div class="flower-exhibition-item__image-wrapper"
          data-sly-test="${model.imageAvailable}">
 
@@ -11,7 +10,6 @@
              src="${model.image @ context='uri'}"
              alt="${model.imageAlt}"
              loading="lazy" />
-
 
         <a class="flower-exhibition-item__image-button"
            data-sly-test="${model.buttonDestinationAvailable && model.linkText}"
@@ -23,12 +21,10 @@
 
     <div class="flower-exhibition-item__content">
 
-
         <p class="flower-exhibition-item__category"
            data-sly-test="${model.category}">
             ${model.category}
         </p>
-
 
         <div class="flower-exhibition-item__metadata"
              data-sly-test="${model.flowerDate || model.readingTime}">
@@ -49,12 +45,10 @@
 
         </div>
 
-
         <h3 class="flower-exhibition-item__title"
             data-sly-test="${model.title}">
             ${model.title}
         </h3>
-
 
         <p class="flower-exhibition-item__description"
            data-sly-test="${model.description}">
@@ -74,3 +68,8 @@
     </div>
 
 </article>
+
+<div data-sly-test="${wcmmode.edit && !model.title}"
+     class="cq-placeholder"
+     data-emptytext="Flower Exhibition Item">
+</div>

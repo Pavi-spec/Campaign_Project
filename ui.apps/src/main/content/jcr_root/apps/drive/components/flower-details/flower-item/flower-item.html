@@ -31,10 +31,15 @@
     <div class="flower-details__image-wrap"
          data-sly-test="${model.flowerImage}">
 
-        <img src="${model.flowerImage}"
+        <img src="${model.flowerImage @ context='uri'}"
              alt="${model.flowerName}"
              loading="lazy" />
 
     </div>
 
 </article>
+
+<div data-sly-test="${wcmmode.edit && !model.flowerName}"
+     class="cq-placeholder"
+     data-emptytext="Flower Details Item">
+</div>

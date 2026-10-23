@@ -1,0 +1,45 @@
+
+/* Standalone Login Button: limit the AEM grid column */
+.login-button.aem-GridColumn--default--12 {
+    float: none;
+    width: 160px !important;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Inner component wrapper */
+.login-button-component {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Actual button */
+.login-button-component .login-button {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    margin: 0;
+    padding: 14px 12px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    background: #6366f1;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Hover */
+.login-button-component .login-button:hover {
+    background: #4f46e5;
+}
+
+
+

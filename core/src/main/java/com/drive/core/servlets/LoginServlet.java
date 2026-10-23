@@ -1,3 +1,4 @@
+
 package com.drive.core.servlets;
 
 import java.io.IOException;
@@ -30,79 +31,78 @@ public class LoginServlet extends SlingAllMethodsServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String email =
-                request.getParameter("email");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
-        String password =
-                request.getParameter("password");
+        boolean passwordRequired =
+                "true".equals(request.getParameter("passwordRequired"));
 
         String emailMessage = "";
         String passwordMessage = "";
 
+        // Validate email only when the email field is configured.
+        if (email != null) {
 
+            if (email.trim().isEmpty()) {
 
-        if (email == null || email.trim().isEmpty()) {
+                emailMessage = "Email is required.";
 
-            emailMessage = "Email is required.";
+            } else {
 
-        } else {
+                email = email.trim();
 
-            email = email.trim();
-
-            if (!EMAIL_PATTERN.matcher(email).matches()) {
-
-                emailMessage =
-                        "Please enter a valid email address.";
+                if (!EMAIL_PATTERN.matcher(email).matches()) {
+                    emailMessage =
+                            "Please enter a valid email address.";
+                }
             }
         }
 
+        // Validate password only when the password field is configured.
+        if (passwordRequired) {
 
+            if (password == null || password.isEmpty()) {
 
+                passwordMessage = "Password is required.";
 
-        if (password == null || password.isEmpty()) {
+            } else if (password.length() < 8) {
 
-            passwordMessage =
-                    "Password is required.";
+                passwordMessage =
+                        "Password must contain at least 8 characters.";
 
-        } else if (password.length() < 8) {
+            } else if (!password.matches(".*[A-Z].*")) {
 
-            passwordMessage =
-                    "Password must contain at least 8 characters.";
+                passwordMessage =
+                        "Password must contain at least one uppercase letter.";
 
-        } else if (!password.matches(".*[A-Z].*")) {
+            } else if (!password.matches(".*[a-z].*")) {
 
-            passwordMessage =
-                    "Password must contain at least one uppercase letter.";
+                passwordMessage =
+                        "Password must contain at least one lowercase letter.";
 
-        } else if (!password.matches(".*[a-z].*")) {
+            } else if (!password.matches(".*[0-9].*")) {
 
-            passwordMessage =
-                    "Password must contain at least one lowercase letter.";
+                passwordMessage =
+                        "Password must contain at least one number.";
 
-        } else if (!password.matches(".*[0-9].*")) {
+            } else if (!password.matches(".*[^A-Za-z0-9].*")) {
 
-            passwordMessage =
-                    "Password must contain at least one number.";
+                passwordMessage =
+                        "Password must contain at least one special character.";
 
-        } else if (!password.matches(".*[^A-Za-z0-9].*")) {
+            } else if (email != null
+                    && !email.isEmpty()
+                    && password.equalsIgnoreCase(email)) {
 
-            passwordMessage =
-                    "Password must contain at least one special character.";
-
-        } else if (email != null
-                && !email.isEmpty()
-                && password.equalsIgnoreCase(email)) {
-
-            passwordMessage =
-                    "Password must be different from your email.";
+                passwordMessage =
+                        "Password must be different from your email.";
+            }
         }
-
-
 
         boolean success =
                 emailMessage.isEmpty()
-                        && passwordMessage.isEmpty();
-
+                        && passwordMessage.isEmpty()
+                        && email != null;
 
         sendResponse(
                 response,
@@ -111,7 +111,6 @@ public class LoginServlet extends SlingAllMethodsServlet {
                 passwordMessage
         );
     }
-
 
     private void sendResponse(
             SlingHttpServletResponse response,
@@ -124,22 +123,21 @@ public class LoginServlet extends SlingAllMethodsServlet {
                 "{"
                         + "\"success\":" + success + ","
                         + "\"emailMessage\":\""
-                        + escapeJson(emailMessage)
-                        + "\","
+                        + escapeJson(emailMessage) + "\","
                         + "\"passwordMessage\":\""
-                        + escapeJson(passwordMessage)
-                        + "\""
+                        + escapeJson(passwordMessage) + "\""
                         + "}";
 
         response.getWriter().write(json);
     }
 
-
     private String escapeJson(String value) {
 
         return value
                 .replace("\\", "\\\\")
-                .replace("\"", "\\\"");
+                .replace("\"", "\\\"")
+                .replace("\n", "\\n")
+                .replace("\r", "\\r")
+                .replace("\t", "\\t");
     }
 }
-

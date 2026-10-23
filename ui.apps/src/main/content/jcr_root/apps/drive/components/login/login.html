@@ -1,66 +1,62 @@
+
 <sly data-sly-use.login="com.drive.core.models.LoginModel"
      data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
-     data-sly-call="${clientlib.all @ categories='login'}">
-</sly>
+     data-sly-call="${clientlib.css @ categories='login'}"/>
 
-<div class="login-component">
-
+<section class="login-component">
     <div class="login-card">
 
+        <!-- Login Heading -->
         <div class="login-header">
-
-            <h2>Login</h2>
-
-            <p>
-                Enter your credentials to continue
+            <h2 class="login-title">Login</h2>
+            <p class="login-subtitle">
+                Enter your details to continue
             </p>
-
         </div>
 
+        <!-- Login Form -->
+        <form class="login-form"
+              data-login-form
+              novalidate>
 
-        <form
-                class="login-form"
-                data-login-form
-                novalidate>
+            <!-- Dynamic Fields from Dialog Multifield -->
+            <div data-sly-list.field="${login.fields}"
+                 class="login-field">
 
-
-            <div
-                    class="login-field"
-                    data-sly-list.field="${login.fields}">
-
-                <label for="login-${fieldList.index}">
+                <label for="login-${fieldList.index}"
+                       class="login-label">
                     ${field.fieldLabel}
                 </label>
 
+                <input id="login-${fieldList.index}"
+                       type="${field.fieldType}"
+                       name="${field.fieldType}"
+                       placeholder="${field.placeholder}"
+                       class="login-input"
+                       data-login-field
+                       data-field-type="${field.fieldType}"
+                       autocomplete="${field.fieldType == 'password' ? 'current-password' : 'email'}"
+                       aria-describedby="login-error-${field.fieldType}"/>
 
-                <input
-                        id="login-${fieldList.index}"
-                        type="text"
-                        placeholder="${field.placeholder}"
-                        class="login-input"
-                        data-login-field
-                        data-field-type="${field.fieldType}" />
-
-
-                <div
-                        class="field-error"
-                        data-field-error="${field.fieldType}">
+                <!-- Individual Validation Message -->
+                <div id="login-error-${field.fieldType}"
+                     class="field-error"
+                     data-field-error="${field.fieldType}"
+                     aria-live="polite">
                 </div>
 
             </div>
 
-
-            <button
-                    type="submit"
-                    class="login-button">
-
-                ${login.buttonText}
-
-            </button>
+            <!-- Separate Login Button Component -->
+            <div class="login-button-slot">
+                <sly data-sly-resource="${'login-button' @
+                    resourceType='drive/components/login-button'}"></sly>
+            </div>
 
         </form>
 
     </div>
-
-</div>
+</section>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.js @ categories='login'}"/>
 
