@@ -34,8 +34,12 @@ public class LoginServlet extends SlingAllMethodsServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        String passwordParam = request.getParameter("password");
+        String passwordRequiredParam = request.getParameter("passwordRequired");
+
         boolean passwordRequired =
-                "true".equals(request.getParameter("passwordRequired"));
+                "true".equals(passwordRequiredParam)
+                        || passwordParam != null;
 
         String emailMessage = "";
         String passwordMessage = "";
@@ -61,7 +65,7 @@ public class LoginServlet extends SlingAllMethodsServlet {
         // Validate password only when the password field is configured.
         if (passwordRequired) {
 
-            if (password == null || password.isEmpty()) {
+            if (password == null || password.trim().isEmpty()) {
 
                 passwordMessage = "Password is required.";
 
@@ -99,10 +103,14 @@ public class LoginServlet extends SlingAllMethodsServlet {
             }
         }
 
+        // Support email-only, password-only, or both fields.
+        boolean emailConfigured = email != null;
+        boolean passwordConfigured = passwordRequired;
+
         boolean success =
-                emailMessage.isEmpty()
-                        && passwordMessage.isEmpty()
-                        && email != null;
+                (emailConfigured || passwordConfigured)
+                        && emailMessage.isEmpty()
+                        && passwordMessage.isEmpty();
 
         sendResponse(
                 response,

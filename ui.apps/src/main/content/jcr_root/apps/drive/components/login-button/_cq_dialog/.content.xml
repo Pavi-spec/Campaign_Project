@@ -28,14 +28,15 @@
                     name="./buttonLink"
                     rootPath="/content"/>
 
+
             <openInNewTab
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                    fieldLabel="Open in New Tab"
                     text="Open in New Tab"
                     name="./openInNewTab"
-                    value="{Boolean}true"
-                    uncheckedValue="{Boolean}false"
-                    checked="{Boolean}false"/>
+                    value="true"
+                    uncheckedValue="false"/>
 
         </items>
     </content>

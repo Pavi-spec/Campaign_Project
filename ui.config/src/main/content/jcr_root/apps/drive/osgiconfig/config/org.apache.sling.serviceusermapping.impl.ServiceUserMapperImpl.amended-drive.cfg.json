@@ -1,5 +1,6 @@
 {
   "user.mapping": [
-    "drive.core:data-reader=data-reader"
+    "drive.core:data-reader=data-reader",
+    "drive.core:loginDataWriter=drive-login-data-writer"
   ]
 }

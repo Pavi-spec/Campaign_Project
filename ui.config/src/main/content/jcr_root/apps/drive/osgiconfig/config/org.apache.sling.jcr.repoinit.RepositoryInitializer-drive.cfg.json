@@ -1,0 +1,7 @@
+{
+  "scripts": [
+    "create service user drive-login-data-writer",
+    "ensure nodes (sling:Folder) /var/drive/login-submissions",
+    "set principal ACL for drive-login-data-writer\n    allow jcr:read,rep:write on /var/drive/login-submissions\nend"
+  ]
+}

@@ -19,7 +19,7 @@ public class LoginButtonModel {
     private String buttonLink;
 
     @ValueMapValue
-    private boolean openInNewTab;
+    private String openInNewTab;
 
     public String getButtonText() {
         return buttonText != null && !buttonText.trim().isEmpty()
@@ -31,7 +31,7 @@ public class LoginButtonModel {
         return buttonLink;
     }
 
-    public boolean isOpenInNewTab() {
-        return openInNewTab;
+    public String getOpenInNewTab() {
+        return openInNewTab != null ? openInNewTab : "false";
     }
 }

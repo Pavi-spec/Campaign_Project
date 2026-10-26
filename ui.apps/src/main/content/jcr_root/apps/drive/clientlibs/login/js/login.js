@@ -1,11 +1,9 @@
-
 document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
 
     const forms = document.querySelectorAll("[data-login-form]");
 
     forms.forEach(function (form) {
-
-        // Avoid attaching the submit handler twice.
         if (form.dataset.loginHandlerAttached === "true") {
             return;
         }
@@ -13,40 +11,43 @@ document.addEventListener("DOMContentLoaded", function () {
         form.dataset.loginHandlerAttached = "true";
 
         let loginTargetTab = null;
+        let loginCsrfToken = "";
 
         const loginButton = form.querySelector("[data-login-submit]");
 
-        // Open a blank tab immediately from the user's click.
-        // This helps prevent the browser from blocking the new tab
-        // after the asynchronous validation request.
+        function closeLoginTargetTab() {
+            if (loginTargetTab && !loginTargetTab.closed) {
+                loginTargetTab.close();
+            }
+
+            loginTargetTab = null;
+        }
+
+        // Open a temporary tab directly from the user's click.
         if (loginButton) {
             loginButton.addEventListener("click", function () {
-
                 const openInNewTab =
                     loginButton.getAttribute("data-login-new-tab") === "true";
 
-                if (openInNewTab) {
+                if (!openInNewTab) {
+                    closeLoginTargetTab();
+                    return;
+                }
 
-                    if (loginTargetTab && !loginTargetTab.closed) {
-                        loginTargetTab.close();
-                    }
+                closeLoginTargetTab();
+                loginTargetTab = window.open("about:blank", "_blank");
 
-                    loginTargetTab = window.open("about:blank", "_blank");
-
-                    if (!loginTargetTab) {
-                        console.error(
-                            "The browser blocked the new tab. Allow pop-ups and try again."
-                        );
-                    }
+                if (!loginTargetTab) {
+                    console.error(
+                        "Pop-up blocked. Allow pop-ups and try again."
+                    );
                 }
             });
         }
 
+        // Handle login form submission.
         form.addEventListener("submit", function (event) {
-
             event.preventDefault();
-
-            console.log("Login form submitted");
 
             const fields = form.querySelectorAll("[data-login-field]");
 
@@ -58,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 '[data-field-error="password"]'
             );
 
+            // Clear previous validation messages.
             if (emailError) {
                 emailError.textContent = "";
             }
@@ -71,10 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
             let hasEmailField = false;
             let hasPasswordField = false;
 
-            // Read the fields configured in the AEM dialog.
+            // Read configured fields.
             fields.forEach(function (field) {
-
-                const fieldType = field.getAttribute("data-field-type");
+                const fieldType = (
+                    field.getAttribute("data-field-type") || ""
+                ).toLowerCase().trim();
 
                 if (fieldType === "email") {
                     hasEmailField = true;
@@ -85,14 +88,65 @@ document.addEventListener("DOMContentLoaded", function () {
                     hasPasswordField = true;
                     password = field.value;
                 }
-
             });
 
+            // At least one field must be configured.
             if (!hasEmailField && !hasPasswordField) {
-                console.error("No login fields are configured.");
+                console.error(
+                    "Configure Email, Password, or both in the Login dialog."
+                );
+                closeLoginTargetTab();
                 return;
             }
 
+            let hasValidationError = false;
+
+            // Validate email independently.
+            if (hasEmailField) {
+                if (!email) {
+                    if (emailError) {
+                        emailError.textContent = "Email is required.";
+                    }
+
+                    hasValidationError = true;
+                } else if (
+                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+                ) {
+                    if (emailError) {
+                        emailError.textContent =
+                            "Enter a valid email address.";
+                    }
+
+                    hasValidationError = true;
+                }
+            }
+
+            // Validate password independently.
+            if (hasPasswordField) {
+                if (!password.trim()) {
+                    if (passwordError) {
+                        passwordError.textContent =
+                            "Password is required.";
+                    }
+
+                    hasValidationError = true;
+                }
+            }
+
+            console.log("Email field configured:", hasEmailField);
+            console.log("Password field configured:", hasPasswordField);
+            console.log("Email validation message:",
+                emailError ? emailError.textContent : "Error element missing");
+            console.log("Password validation message:",
+                passwordError ? passwordError.textContent : "Error element missing");
+
+            // Stop before any network request if either field is invalid.
+            if (hasValidationError) {
+                closeLoginTargetTab();
+                return;
+            }
+
+            // Prepare data for the login validation servlet.
             const formData = new URLSearchParams();
 
             if (hasEmailField) {
@@ -103,10 +157,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 formData.append("password", password);
             }
 
-            // For configurable form validation only.
             formData.append(
                 "passwordRequired",
-                String(hasPasswordField)
+                hasPasswordField ? "true" : "false"
             );
 
             const submitButton = form.querySelector(
@@ -117,35 +170,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 submitButton.disabled = true;
             }
 
+            // Retrieve the AEM CSRF token.
             fetch("/libs/granite/csrf/token.json")
                 .then(function (response) {
-
                     if (!response.ok) {
                         throw new Error("Unable to retrieve CSRF token.");
                     }
 
                     return response.json();
-
                 })
                 .then(function (csrfData) {
-
                     if (!csrfData.token) {
                         throw new Error("CSRF token is missing.");
                     }
 
+                    loginCsrfToken = csrfData.token;
+
+                    // Validate the configured fields in the servlet.
                     return fetch("/bin/drive/login", {
                         method: "POST",
                         headers: {
                             "Content-Type":
                                 "application/x-www-form-urlencoded",
-                            "CSRF-Token": csrfData.token
+                            "CSRF-Token": loginCsrfToken
                         },
                         body: formData.toString()
                     });
-
                 })
                 .then(function (response) {
-
                     if (!response.ok) {
                         throw new Error(
                             "Servlet request failed with HTTP " +
@@ -154,108 +206,162 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
                     return response.json();
-
                 })
                 .then(function (data) {
-
-                    if (emailError && hasEmailField) {
+                    // Display server-side validation messages.
+                    if (emailError) {
                         emailError.textContent =
                             data.emailMessage || "";
                     }
 
-                    if (passwordError && hasPasswordField) {
+                    if (passwordError) {
                         passwordError.textContent =
                             data.passwordMessage || "";
                     }
 
-                    if (data.success === true) {
-
-                        console.log("Form validation successful.");
-
-                        const button = form.querySelector(
-                            "[data-login-submit]"
-                        );
-
-                        if (!button) {
-                            console.error("Login button not found.");
-                            return;
-                        }
-
-                        const destination = button.getAttribute(
-                            "data-login-destination"
-                        );
-
-                        const openInNewTab =
-                            button.getAttribute("data-login-new-tab") === "true";
-
-                        console.log("Destination:", destination);
-                        console.log("Open in new tab:", openInNewTab);
-
-                        if (!destination || !destination.trim()) {
-                            console.error(
-                                "Button Link is empty in the component dialog."
-                            );
-
-                            if (loginTargetTab && !loginTargetTab.closed) {
-                                loginTargetTab.close();
-                                loginTargetTab = null;
-                            }
-
-                            return;
-                        }
-
-                        if (openInNewTab) {
-
-                            if (loginTargetTab && !loginTargetTab.closed) {
-                                loginTargetTab.location.href = destination;
-                                loginTargetTab = null;
-                            } else {
-                                console.error(
-                                    "New tab unavailable. Allow pop-ups and try again."
-                                );
-                            }
-
-                        } else {
-
-                            if (loginTargetTab && !loginTargetTab.closed) {
-                                loginTargetTab.close();
-                                loginTargetTab = null;
-                            }
-
-                            window.location.assign(destination);
-                        }
-
-                    } else {
-
-                        // Validation failed: do not navigate.
-                        if (loginTargetTab && !loginTargetTab.closed) {
-                            loginTargetTab.close();
-                            loginTargetTab = null;
-                        }
-
+                    // Do not continue when validation fails.
+                    if (data.success !== true) {
+                        closeLoginTargetTab();
+                        return;
                     }
 
+                    const destination = loginButton
+                        ? loginButton.getAttribute(
+                            "data-login-destination"
+                        )
+                        : "";
+
+                    const openInNewTab = !!loginButton &&
+                        loginButton.getAttribute(
+                            "data-login-new-tab"
+                        ) === "true";
+
+                    if (!destination || !destination.trim()) {
+                        console.error(
+                            "Configure Button Link in the Login Button dialog."
+                        );
+                        closeLoginTargetTab();
+                        return;
+                    }
+
+                    // Save metadata only. Never store the raw password.
+                    if (loginCsrfToken) {
+                        const storageData = new URLSearchParams();
+
+                        if (hasEmailField) {
+                            storageData.append("email", email);
+                        }
+
+                        storageData.append(
+                            "passwordRequired",
+                            hasPasswordField ? "true" : "false"
+                        );
+
+                        fetch("/bin/drive/login-data", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type":
+                                    "application/x-www-form-urlencoded",
+                                "CSRF-Token": loginCsrfToken
+                            },
+                            body: storageData.toString(),
+                            credentials: "same-origin",
+                            keepalive: true
+                        })
+                            .then(function (response) {
+                                if (!response.ok) {
+                                    throw new Error(
+                                        "Login data save failed with HTTP " +
+                                        response.status
+                                    );
+                                }
+
+                                return response.json();
+                            })
+                            .then(function (saveResult) {
+                                if (saveResult.success === true) {
+                                    console.log(
+                                        "Login submission metadata saved successfully."
+                                    );
+                                } else {
+                                    console.error(
+                                        "Login submission was not saved.",
+                                        saveResult
+                                    );
+                                }
+                            })
+                            .catch(function (error) {
+                                console.error(
+                                    "Login data storage error:",
+                                    error
+                                );
+                            });
+                    }
+
+                    // Preserve the original navigation behavior.
+                    if (openInNewTab) {
+                        if (loginTargetTab && !loginTargetTab.closed) {
+                            loginTargetTab.location.href = destination;
+                            loginTargetTab = null;
+                        } else {
+                            console.error(
+                                "New tab unavailable. Allow pop-ups and try again."
+                            );
+                        }
+                    } else {
+                        closeLoginTargetTab();
+                        window.location.assign(destination);
+                    }
                 })
                 .catch(function (error) {
-
                     console.error("Login request failed:", error);
-
-                    if (loginTargetTab && !loginTargetTab.closed) {
-                        loginTargetTab.close();
-                        loginTargetTab = null;
-                    }
-
+                    closeLoginTargetTab();
                 })
                 .finally(function () {
-
                     if (submitButton) {
                         submitButton.disabled = false;
                     }
-
                 });
-
         });
-
     });
 
+    // Handle login buttons used outside the login form.
+    document.querySelectorAll("[data-login-submit]").forEach(
+        function (button) {
+            // Buttons inside a login form are handled by the form.
+            if (button.closest("[data-login-form]")) {
+                return;
+            }
+
+            if (button.dataset.standaloneHandlerAttached === "true") {
+                return;
+            }
+
+            button.dataset.standaloneHandlerAttached = "true";
+
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                const destination = button.getAttribute(
+                    "data-login-destination"
+                );
+
+                const openInNewTab =
+                    button.getAttribute("data-login-new-tab") === "true";
+
+                if (!destination || !destination.trim()) {
+                    console.error(
+                        "Configure Button Link in the Login Button dialog."
+                    );
+                    return;
+                }
+
+                if (openInNewTab) {
+                    window.open(destination, "_blank");
+                } else {
+                    window.location.assign(destination);
+                }
+            });
+        }
+    );
 });
