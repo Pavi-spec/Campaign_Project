@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const forms = document.querySelectorAll("[data-login-form]");
 
     forms.forEach(function (form) {
+        // Prevent duplicate handlers on the same form.
         if (form.dataset.loginHandlerAttached === "true") {
             return;
         }
@@ -49,7 +50,13 @@ document.addEventListener("DOMContentLoaded", function () {
         form.addEventListener("submit", function (event) {
             event.preventDefault();
 
-            const fields = form.querySelectorAll("[data-login-field]");
+            const emailField = form.querySelector(
+                '[data-login-field][data-field-type="email"]'
+            );
+
+            const passwordField = form.querySelector(
+                '[data-login-field][data-field-type="password"]'
+            );
 
             const emailError = form.querySelector(
                 '[data-field-error="email"]'
@@ -68,99 +75,82 @@ document.addEventListener("DOMContentLoaded", function () {
                 passwordError.textContent = "";
             }
 
-            let email = "";
-            let password = "";
-            let hasEmailField = false;
-            let hasPasswordField = false;
-
-            // Read configured fields.
-            fields.forEach(function (field) {
-                const fieldType = (
-                    field.getAttribute("data-field-type") || ""
-                ).toLowerCase().trim();
-
-                if (fieldType === "email") {
-                    hasEmailField = true;
-                    email = field.value.trim();
-                }
-
-                if (fieldType === "password") {
-                    hasPasswordField = true;
-                    password = field.value;
-                }
-            });
-
-            // At least one field must be configured.
-            if (!hasEmailField && !hasPasswordField) {
+            // Both fields must exist in the component.
+            if (!emailField || !passwordField) {
                 console.error(
-                    "Configure Email, Password, or both in the Login dialog."
+                    "Configure both Email and Password in the Login dialog."
                 );
+
+                if (emailError) {
+                    emailError.textContent = !emailField
+                        ? "Email field is not configured."
+                        : "";
+                }
+
+                if (passwordError) {
+                    passwordError.textContent = !passwordField
+                        ? "Password field is not configured."
+                        : "";
+                }
+
                 closeLoginTargetTab();
                 return;
             }
 
+            const email = emailField.value.trim();
+            const password = passwordField.value;
+
             let hasValidationError = false;
 
-            // Validate email independently.
-            if (hasEmailField) {
-                if (!email) {
-                    if (emailError) {
-                        emailError.textContent = "Email is required.";
-                    }
-
-                    hasValidationError = true;
-                } else if (
-                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-                ) {
-                    if (emailError) {
-                        emailError.textContent =
-                            "Enter a valid email address.";
-                    }
-
-                    hasValidationError = true;
+            // Email validation.
+            if (!email) {
+                if (emailError) {
+                    emailError.textContent = "Email is required.";
                 }
+
+                hasValidationError = true;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                if (emailError) {
+                    emailError.textContent =
+                        "Enter a valid email address.";
+                }
+
+                hasValidationError = true;
             }
 
-            // Validate password independently.
-            if (hasPasswordField) {
-                if (!password.trim()) {
-                    if (passwordError) {
-                        passwordError.textContent =
-                            "Password is required.";
-                    }
-
-                    hasValidationError = true;
+            // Password validation.
+            if (!password.trim()) {
+                if (passwordError) {
+                    passwordError.textContent = "Password is required.";
                 }
+
+                hasValidationError = true;
             }
 
-            console.log("Email field configured:", hasEmailField);
-            console.log("Password field configured:", hasPasswordField);
-            console.log("Email validation message:",
-                emailError ? emailError.textContent : "Error element missing");
-            console.log("Password validation message:",
-                passwordError ? passwordError.textContent : "Error element missing");
+            console.log("Email field configured:", !!emailField);
+            console.log("Password field configured:", !!passwordField);
+            console.log(
+                "Email validation message:",
+                emailError ? emailError.textContent : "Error element missing"
+            );
+            console.log(
+                "Password validation message:",
+                passwordError
+                    ? passwordError.textContent
+                    : "Error element missing"
+            );
 
-            // Stop before any network request if either field is invalid.
+            // Do not send any request when either field is invalid.
             if (hasValidationError) {
                 closeLoginTargetTab();
                 return;
             }
 
-            // Prepare data for the login validation servlet.
+            // Both fields are mandatory.
             const formData = new URLSearchParams();
-
-            if (hasEmailField) {
-                formData.append("email", email);
-            }
-
-            if (hasPasswordField) {
-                formData.append("password", password);
-            }
-
-            formData.append(
-                "passwordRequired",
-                hasPasswordField ? "true" : "false"
-            );
+            formData.append("email", email);
+            formData.append("password", password);
+            formData.append("passwordRequired", "true");
 
             const submitButton = form.querySelector(
                 'button[type="submit"]'
@@ -174,7 +164,9 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch("/libs/granite/csrf/token.json")
                 .then(function (response) {
                     if (!response.ok) {
-                        throw new Error("Unable to retrieve CSRF token.");
+                        throw new Error(
+                            "Unable to retrieve CSRF token."
+                        );
                     }
 
                     return response.json();
@@ -186,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     loginCsrfToken = csrfData.token;
 
-                    // Validate the configured fields in the servlet.
+                    // Send both fields to the servlet.
                     return fetch("/bin/drive/login", {
                         method: "POST",
                         headers: {
@@ -194,7 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 "application/x-www-form-urlencoded",
                             "CSRF-Token": loginCsrfToken
                         },
-                        body: formData.toString()
+                        body: formData.toString(),
+                        credentials: "same-origin"
                     });
                 })
                 .then(function (response) {
@@ -219,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             data.passwordMessage || "";
                     }
 
-                    // Do not continue when validation fails.
+                    // Stop if server-side validation fails.
                     if (data.success !== true) {
                         closeLoginTargetTab();
                         return;
@@ -240,6 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         console.error(
                             "Configure Button Link in the Login Button dialog."
                         );
+
                         closeLoginTargetTab();
                         return;
                     }
@@ -248,14 +242,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (loginCsrfToken) {
                         const storageData = new URLSearchParams();
 
-                        if (hasEmailField) {
-                            storageData.append("email", email);
-                        }
-
-                        storageData.append(
-                            "passwordRequired",
-                            hasPasswordField ? "true" : "false"
-                        );
+                        storageData.append("email", email);
+                        storageData.append("passwordRequired", "true");
 
                         fetch("/bin/drive/login-data", {
                             method: "POST",
@@ -298,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             });
                     }
 
-                    // Preserve the original navigation behavior.
+                    // Navigate only after successful validation.
                     if (openInNewTab) {
                         if (loginTargetTab && !loginTargetTab.closed) {
                             loginTargetTab.location.href = destination;
@@ -325,10 +313,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Handle login buttons used outside the login form.
+    // Handle login buttons used outside a login form.
     document.querySelectorAll("[data-login-submit]").forEach(
         function (button) {
-            // Buttons inside a login form are handled by the form.
+            // Form buttons are handled by the form submit listener.
             if (button.closest("[data-login-form]")) {
                 return;
             }
